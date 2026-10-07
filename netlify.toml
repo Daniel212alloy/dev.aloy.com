@@ -1,0 +1,6 @@
+[build]
+  base = "web/creative"
+  publish = "web/creative"
+
+[build.environment]
+  NETLIFY_SKIP_COLLAB_DRAFTS = "true"
