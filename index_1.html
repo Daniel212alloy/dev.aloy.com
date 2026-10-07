@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Daniel IT Solution: jasa server, jaringan, dan web, plus jual gitar, laptop & PC, dan jastip.">
+<title>Daniel IT Solution | Jasa IT, Gitar, Laptop & PC, Jastip</title>
+<link rel="icon" href="assets/favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#14213d;--paper:#f6f5f1;--brass:#b9852a;--teal:#0f6b63;--line:#d9d6cc;--mut:#58607a}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font:17px/1.6 "IBM Plex Sans",system-ui,sans-serif;color:var(--ink);background:var(--paper)}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.1;margin:0}
+a{color:inherit}.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+nav{position:sticky;top:0;z-index:9;background:var(--paper);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{font:800 20px "Bricolage Grotesque",sans-serif;text-decoration:none}
+.logo span{color:var(--brass)}
+nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;font-size:15px}
+nav ul a{text-decoration:none;color:var(--mut)}nav ul a:hover{color:var(--ink)}
+.btn{display:inline-block;padding:13px 22px;border-radius:6px;background:var(--ink);color:#fff;text-decoration:none;font-weight:500}
+.btn.alt{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.btn.brass{background:var(--brass)}
+.hero{padding:88px 0 72px}
+.hero h1{font-size:clamp(40px,7vw,80px);font-weight:800;max-width:15ch;letter-spacing:-.02em}
+.hero p{max-width:56ch;color:var(--mut);font-size:19px;margin:24px 0 32px}
+.hero .row{display:flex;gap:12px;flex-wrap:wrap}
+.lines{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
+.lines a{padding:28px 24px;text-decoration:none;border-right:1px solid var(--line)}
+.lines a:last-child{border-right:0}.lines a:hover{background:#fff}
+.lines h3{font-size:22px;margin-bottom:6px}.lines p{margin:0;color:var(--mut);font-size:15px}
+section{padding:80px 0}
+h2{font-size:clamp(30px,4.5vw,46px);font-weight:700;margin-bottom:12px}
+.lead{color:var(--mut);max-width:60ch;margin:0 0 40px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:26px}
+.card h3{font-size:20px;margin-bottom:8px}.card p{margin:0;color:var(--mut);font-size:15.5px}
+.dark{background:var(--ink);color:#fff}.dark .lead{color:#c3c9dc}
+.dark .card{background:#1d2c4f;border-color:#2f4172}.dark .card p{color:#c3c9dc}
+.steps{counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;padding:0;list-style:none}
+.steps li{counter-increment:s;border-top:3px solid var(--brass);padding-top:14px}
+.steps li:before{content:counter(s);font:800 32px "Bricolage Grotesque";color:var(--brass);display:block}
+.steps b{display:block;font-family:"Bricolage Grotesque";font-size:19px}
+.steps span{color:#c3c9dc;font-size:15px}
+.port{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2px}
+.port a{position:relative;display:block;aspect-ratio:4/3;background:#e5e2d8;overflow:hidden;text-decoration:none}
+.port img{width:100%;height:100%;object-fit:cover;display:block}
+.port div{position:absolute;inset:auto 0 0 0;padding:16px;color:#fff;background:linear-gradient(transparent,rgba(20,33,61,.92))}
+.port small{opacity:.8}.port b{display:block;font-family:"Bricolage Grotesque";font-size:18px}
+.contact{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:start}
+form{display:grid;gap:14px}
+label{font-size:14px;font-weight:500}
+input,select,textarea{width:100%;padding:12px;border:1px solid var(--line);border-radius:6px;font:inherit;background:#fff;color:var(--ink)}
+footer{border-top:1px solid var(--line);padding:32px 0;color:var(--mut);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+@media(max-width:860px){nav ul{display:none}.lines{grid-template-columns:1fr 1fr}.lines a:nth-child(2){border-right:0}.lines a:nth-child(-n+2){border-bottom:1px solid var(--line)}.contact{grid-template-columns:1fr}.hero{padding:56px 0 48px}section{padding:56px 0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+#pos{--bg:#f6f5f1;--card:#fff;--ink:#14213d;--mut:#58607a;--line:#d9d6cc;--acc:#b9852a;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,sans-serif;min-height:100vh}
+#pos{
+
+*{box-sizing:border-box}
+header{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);gap:8px;flex-wrap:wrap}
+h1{font-size:18px;margin:0}
+.tabs button,.cat button{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 14px;border-radius:6px;cursor:pointer;font:inherit}
+.tabs button.on,.cat button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+main{display:grid;grid-template-columns:1fr 340px;gap:16px;padding:16px;max-width:1200px;margin:0 auto}
+.cat{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
+input,select{padding:9px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink);font:inherit;width:100%}
+.prods{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.p{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px;text-align:left;cursor:pointer;color:var(--ink);font:inherit}
+.p:hover{border-color:var(--acc)}.p small{color:var(--mut);display:block}.p b{display:block;margin-top:6px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;align-self:start;position:sticky;top:8px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--line)}
+.q button{width:26px;height:26px;border:1px solid var(--line);background:none;color:var(--ink);border-radius:4px;cursor:pointer}
+.tot{font-size:22px;font-weight:700}
+.go{width:100%;padding:13px;margin-top:10px;border:0;border-radius:6px;background:var(--acc);color:#fff;font:600 16px system-ui;cursor:pointer}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:8px;border-bottom:1px solid var(--line)}
+.scroll{overflow-x:auto}
+.hide{display:none}
+#rc{white-space:pre;font:13px monospace;background:var(--card);border:1px dashed var(--mut);padding:12px;margin-top:10px;overflow-x:auto}
+@media(max-width:820px){main{grid-template-columns:1fr}.panel{position:static}}
+
+}
+.off{display:none!important}
+@media print{body *{visibility:hidden}#rcw,#rcw *{visibility:visible}#rcw{position:absolute;left:0;top:0}}
+.lang{display:inline-flex;border:1px solid currentColor;border-radius:6px;overflow:hidden}.lang button{border:0;background:none;color:inherit;padding:6px 10px;cursor:pointer;font:inherit;font-size:13px}.lang button[aria-pressed=true]{background:var(--ink);color:#fff}
+@media(max-width:480px){nav .wrap{padding:0 14px}nav .btn{padding:9px 12px;font-size:14px}.logo{font-size:17px}}
+</style>
+</head>
+<body>
+<div id="site">
+<nav><div class="wrap">
+<a class="logo" href="#">DANIEL<span>.SYSTEMS</span></a>
+<ul><li><a href="#jasa-it">Jasa IT</a></li><li><a href="#gitar">Gitar</a></li><li><a href="#laptop-pc">Laptop &amp; PC</a></li><li><a href="#jastip">Jastip</a></li><li><a href="#portfolio">Portfolio</a></li></ul>
+<div style="display:flex;gap:12px;align-items:center"><div class="lang" role="group" aria-label="Language"><button type="button" data-l="id" onclick="setLang('id')">ID</button><button type="button" data-l="en" onclick="setLang('en')">EN</button></div><a class="btn brass" href="#kontak">Hubungi saya</a></div>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+<h1>Server yang stabil, gitar yang pas, laptop yang siap kerja.</h1>
+<p>Saya Daniel. Saya membangun dan merawat infrastruktur IT untuk bisnis, dan menjual gitar, laptop, PC, serta layanan jastip untuk kebutuhan sehari-hari Anda.</p>
+<div class="row"><a class="btn" href="#kontak">Konsultasi gratis</a><a class="btn alt" href="#portfolio">Lihat hasil kerja</a></div>
+</div></header>
+
+<div class="wrap"><div class="lines">
+<a href="#jasa-it"><h3>Jasa IT</h3><p>Server, jaringan, web</p></a>
+<a href="#gitar"><h3>Gitar</h3><p>bekas terawat</p></a>
+<a href="#laptop-pc"><h3>Laptop &amp; PC</h3><p>Rakit, jual, upgrade</p></a>
+<a href="#jastip"><h3>Jastip</h3><p>Titip barang dari mana saja</p></a>
+</div></div>
+
+<section id="jasa-it"><div class="wrap">
+<h2>Jasa IT</h2>
+<p class="lead">Dari satu server kecil sampai jaringan kantor. Semua dikonfigurasi aman, didokumentasikan, dan bisa dipantau.</p>
+<div class="grid">
+<div class="card"><h3>Server &amp; virtualisasi</h3><p>Proxmox, KVM, Docker, dan VM Linux (Debian, Rocky, CentOS).</p></div>
+<div class="card"><h3>Jaringan &amp; VPN</h3><p>Mikrotik, WireGuard, dan Cloudflare Tunnel untuk akses jarak jauh yang aman.</p></div>
+<div class="card"><h3>Aplikasi self-hosted</h3><p>Nextcloud, mail server Zimbra, Roundcube, LDAP, dan monitoring Grafana.</p></div>
+<div class="card"><h3>Website &amp; chatbot</h3><p>Website responsif, chatbot, dan notifikasi alert real-time ke WhatsApp.</p></div>
+</div></div></section>
+
+<section id="gitar" style="background:#fff"><div class="wrap">
+<h2>Gitar</h2>
+<p class="lead">Akustik, elektrik, Setiap gitar dicek fret, neck, dan elektroniknya sebelum dijual.</p>
+<div class="grid">
+<div class="card"><h3>Gitar baru</h3><p>Berbagai merek dan rentang harga, cocok untuk pemula sampai panggung.</p></div>
+</div>
+<p style="margin-top:28px"><a class="btn" href="#kontak">Tanya stok gitar</a></p>
+</div></section>
+
+<section id="laptop-pc"><div class="wrap">
+<h2>Laptop &amp; PC</h2>
+<p class="lead">Unit siap pakai, rakitan sesuai budget, dan upgrade untuk perangkat lama Anda.</p>
+<div class="grid">
+<div class="card"><h3>Laptop baru &amp; bekas</h3><p>Untuk kerja, kuliah, desain, dan coding. Unit bekas diuji dan bergaransi toko.</p></div>
+<div class="card"><h3>Rakit PC</h3><p>Kantor, gaming, workstation, atau home server, sesuai kebutuhan dan budget.</p></div>
+<div class="card"><h3>Upgrade &amp; servis</h3><p>Tambah RAM, ganti SSD, instal ulang OS, dan pembersihan.</p></div>
+</div>
+<p style="margin-top:28px"><a class="btn" href="#kontak">Minta rekomendasi</a></p>
+</div></section>
+
+<section id="jastip" class="dark"><div class="wrap">
+<h2>Jastip</h2>
+<p class="lead">Ada barang yang sulit dicari? Titip ke saya. Harga dan biaya jasa dijelaskan di depan, tanpa kejutan.</p>
+<ol class="steps">
+<li><b>Kirim permintaan</b><span>Link atau nama barang, jumlah, dan budget.</span></li>
+<li><b>Terima penawaran</b><span>Harga barang, biaya jasa, dan estimasi tiba.</span></li>
+<li><b>Bayar</b><span>Transfer atau e-wallet, bukti dikirim lewat chat.</span></li>
+<li><b>Barang dikirim</b><span>Nomor resi diberikan begitu barang dikirim.</span></li>
+</ol>
+</div></section>
+
+<div id="portfolio"><div class="wrap" style="padding-top:80px"><h2>Portfolio</h2><p class="lead">Beberapa proyek IT yang sudah dikerjakan.</p></div>
+<div class="port">
+<a href="assets/img/portfolio/fullsize/nexcloud.id.png"><img src="assets/img/portfolio/thumbnails/nexcloud.id.png" alt="Nextcloud" loading="lazy"><div><small>Penyimpanan</small><b>Private cloud Nextcloud</b></div></a>
+<a href="assets/img/portfolio/fullsize/ldap_setup.png"><img src="assets/img/portfolio/thumbnails/ldap_setup.png" alt="LDAP" loading="lazy"><div><small>Keamanan</small><b>Login terpusat dengan LDAP</b></div></a>
+<a href="assets/img/portfolio/fullsize/zimbra.png"><img src="assets/img/portfolio/thumbnails/zimbra.png" alt="Zimbra" loading="lazy"><div><small>Komunikasi</small><b>Mail server Zimbra</b></div></a>
+<a href="assets/img/portfolio/fullsize/roundcube_1.png"><img src="assets/img/portfolio/thumbnails/roundcube_1.png" alt="Roundcube" loading="lazy"><div><small>Komunikasi</small><b>Webmail Roundcube</b></div></a>
+<a href="assets/img/portfolio/fullsize/chaboot.png"><img src="assets/img/portfolio/thumbnails/chaboot.png" alt="Chatbot" loading="lazy"><div><small>Otomasi</small><b>Chatbot</b></div></a>
+<a href="assets/img/portfolio/fullsize/Kuma.png"><img src="assets/img/portfolio/thumbnails/Kuma.png" alt="Uptime Kuma" loading="lazy"><div><small>Monitoring</small><b>Dashboard monitoring</b></div></a>
+<a href="assets/img/portfolio/fullsize/Wa_alert.png"><img src="assets/img/portfolio/thumbnails/Wa_alert.png" alt="Alert" loading="lazy"><div><small>Monitoring</small><b>Alert real-time ke WhatsApp</b></div></a>
+</div></div>
+
+<section id="kontak"><div class="wrap contact">
+<div>
+<h2>Hubungi saya</h2>
+<p class="lead">Ceritakan kebutuhan Anda. Pesan akan dibuka di WhatsApp dan saya balas secepatnya.</p>
+<p><b>WhatsApp:</b> 0823-6673-7623<br><b>Email:</b> danielsaragih212@gmail.com<br><b>Jam layanan:</b> Senin sampai Sabtu, 09.00 sampai 20.00</p>
+</div>
+<form id="f">
+<div><label for="n">Nama</label><input id="n" required></div>
+<div><label for="k">Saya butuh</label><select id="k"><option value="Jasa IT">Jasa IT</option><option value="Gitar">Gitar</option><option value="Laptop &amp; PC">Laptop &amp; PC</option><option value="Jastip">Jastip</option></select></div>
+<div><label for="m">Pesan</label><textarea id="m" rows="4" required></textarea></div>
+<button class="btn brass" style="border:0;cursor:pointer;font:inherit">Kirim lewat WhatsApp</button>
+</form>
+</div></section>
+
+<footer><div class="wrap"><span>&copy; 2026 Daniel IT Solution</span><span>Jasa IT, gitar, laptop &amp; PC, jastip &middot; <a href="#kasir">Kasir</a></span></div></footer>
+
+</div>
+<div id="pos" class="off">
+<header><h1>Kasir Daniel</h1><a href="#" style="color:var(--mut)">Kembali ke website</a><div class="lang" role="group" aria-label="Language"><button type="button" data-l="id" onclick="setLang('id')">ID</button><button type="button" data-l="en" onclick="setLang('en')">EN</button></div>
+<div class="tabs"><button id="t1" class="on" onclick="tab(1)">Kasir</button><button id="t2" onclick="tab(2)">Produk</button><button id="t3" onclick="tab(3)">Laporan</button></div></header>
+
+<main id="v1">
+<div><input id="q" placeholder="Cari produk" oninput="draw()"><div class="cat" id="cats"></div><div class="prods" id="pl"></div></div>
+<div class="panel"><b>Keranjang</b><div id="cart"><p style="color:var(--mut)">Pilih produk untuk memulai.</p></div>
+<div class="g2"><div><small>Diskon (Rp)</small><input id="disc" type="number" min="0" value="0" oninput="sum()"></div>
+<div><small>Pembayaran</small><select id="pay"><option value="Tunai">Tunai</option><option value="Transfer">Transfer</option><option value="QRIS">QRIS</option></select></div></div>
+<div class="g2"><div><small>Uang diterima</small><input id="recv" type="number" min="0" oninput="sum()"></div><div><small>Pelanggan</small><input id="cust" placeholder="Opsional"></div></div>
+<div class="row" style="margin-top:8px"><span>Total</span><span class="tot" id="total">Rp0</span></div>
+<div class="row"><span>Kembalian</span><span id="chg">Rp0</span></div>
+<button class="go" onclick="pay_()">Selesaikan transaksi</button>
+<button class="go" style="background:none;color:var(--mut);border:1px solid var(--line);margin-top:6px;font-weight:400" onclick="cart=[];sum();rcart()">Kosongkan</button></div>
+</main>
+
+<main id="v2" class="hide" style="grid-template-columns:1fr">
+<div class="panel" style="position:static"><b>Tambah / ubah produk</b>
+<div class="g2"><input id="pn" placeholder="Nama produk"><select id="pc"></select><input id="pp" type="number" min="0" placeholder="Harga jual (Rp)"><input id="ps" type="number" min="0" placeholder="Stok (kosong untuk jasa)"></div>
+<button class="go" style="width:auto;padding:10px 20px" onclick="addP()">Simpan produk</button></div>
+<div class="panel scroll" style="position:static"><table><thead><tr><th>Produk</th><th>Kategori</th><th>Harga</th><th>Stok</th><th></th></tr></thead><tbody id="pt"></tbody></table></div>
+</main>
+
+<main id="v3" class="hide" style="grid-template-columns:1fr">
+<div class="panel" style="position:static"><div class="g2"><div><small>Penjualan hari ini</small><div class="tot" id="rd">Rp0</div></div><div><small>Semua transaksi</small><div class="tot" id="ra">Rp0</div></div></div>
+<button class="go" style="width:auto;padding:10px 20px" onclick="csv()">Unduh CSV</button></div>
+<div class="panel scroll" style="position:static"><table><thead><tr><th>Waktu</th><th>Pelanggan</th><th>Item</th><th>Metode</th><th>Total</th></tr></thead><tbody id="rt"></tbody></table><p id="re" style="color:var(--mut)"></p></div>
+</main>
+
+<div id="rcw" class="hide" style="padding:16px;max-width:420px;margin:auto"><div id="rc"></div><button class="go" onclick="window.print()">Cetak struk</button></div>
+
+</div>
+<script>
+(function(){
+var WA="6282366737623";
+var g=function(i){return document.getElementById(i)};
+g("f").addEventListener("submit",function(e){e.preventDefault();
+var en=window.LANG=="en",t=(en?"Hello Daniel, I'm ":"Halo Daniel, saya ")+g("n").value+(en?". I need: ":". Saya butuh: ")+g("k").value+".\n"+g("m").value;
+window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(t),"_blank")})})();
+</script>
+<script>
+
+var CATS=["Jasa IT","Gitar","Laptop & PC","Jastip"],cat="Semua",cart=[];
+var def=[{id:1,n:"Setup Proxmox",c:"Jasa IT",p:1500000},{id:2,n:"Konfigurasi Mikrotik",c:"Jasa IT",p:500000},{id:3,n:"Servis & instal ulang OS",c:"Jasa IT",p:150000},{id:4,n:"Senar gitar set",c:"Gitar",p:85000,s:20},{id:5,n:"Setup & setting action gitar",c:"Gitar",p:150000},{id:6,n:"SSD 512GB",c:"Laptop & PC",p:550000,s:8},{id:7,n:"RAM DDR4 8GB",c:"Laptop & PC",p:300000,s:10},{id:8,n:"Biaya jasa titip",c:"Jastip",p:50000}];
+function ld(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}}
+function sv(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+var P=ld("pos_p",def),S=ld("pos_s",[]);
+var $=function(i){return document.getElementById(i)},R=function(n){return "Rp"+Math.round(n).toLocaleString("id-ID")};
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function tab(n){[1,2,3].forEach(function(i){$("v"+i).classList.toggle("hide",i!=n);$("t"+i).classList.toggle("on",i==n)});$("rcw").classList.add("hide");if(n==2)tbl();if(n==3)rep()}
+function draw(){
+$("cats").innerHTML=["Semua"].concat(CATS).map(function(c){return '<button class="'+(c==cat?"on":"")+'" onclick="cat=\''+c+'\';draw()">'+esc(c)+'</button>'}).join("");
+var q=$("q").value.toLowerCase();
+$("pl").innerHTML=P.filter(function(p){return (cat=="Semua"||p.c==cat)&&p.n.toLowerCase().indexOf(q)>-1}).map(function(p){
+return '<button class="p" onclick="add('+p.id+')"><small>'+esc(p.c)+'</small>'+esc(p.n)+'<b>'+R(p.p)+'</b>'+(p.s!=null?'<small>Stok '+p.s+'</small>':'')+'</button>'}).join("")||'<p style="color:var(--mut)">Produk tidak ditemukan.</p>'}
+function add(id){var p=P.find(function(x){return x.id==id}),i=cart.find(function(x){return x.id==id});
+if(p.s!=null&&(i?i.q:0)>=p.s){alert(T("Stok habis: ")+p.n);return}
+if(i)i.q++;else cart.push({id:id,n:p.n,p:p.p,q:1});rcart()}
+function qty(id,d){var i=cart.find(function(x){return x.id==id});var p=P.find(function(x){return x.id==id});
+if(d>0&&p.s!=null&&i.q>=p.s)return;i.q+=d;if(i.q<1)cart=cart.filter(function(x){return x.id!=id});rcart()}
+function rcart(){$("cart").innerHTML=cart.length?cart.map(function(i){return '<div class="row"><span>'+esc(i.n)+'<br><small>'+R(i.p)+'</small></span><span class="q"><button onclick="qty('+i.id+',-1)" aria-label="Kurangi">-</button> '+i.q+' <button onclick="qty('+i.id+',1)" aria-label="Tambah">+</button></span></div>'}).join(""):'<p style="color:var(--mut)">Pilih produk untuk memulai.</p>';sum()}
+function tot(){var t=cart.reduce(function(a,i){return a+i.p*i.q},0)-(+$("disc").value||0);return Math.max(t,0)}
+function sum(){var t=tot();$("total").textContent=R(t);var r=+$("recv").value||0;$("chg").textContent=r>=t&&r?R(r-t):"Rp0"}
+function pay_(){
+if(!cart.length){alert(T("Keranjang masih kosong."));return}
+var t=tot(),m=$("pay").value,r=+$("recv").value||0;
+if(m=="Tunai"&&r<t){alert(T("Uang diterima kurang dari total."));return}
+var tx={id:Date.now(),d:new Date().toISOString(),c:$("cust").value||"Umum",it:cart,disc:+$("disc").value||0,t:t,m:m,r:r};
+cart.forEach(function(i){var p=P.find(function(x){return x.id==i.id});if(p.s!=null)p.s-=i.q});
+S.unshift(tx);sv("pos_s",S);sv("pos_p",P);
+var L=["DANIEL IT SOLUTION",T("Gitar | Laptop & PC | Jastip"),new Date(tx.d).toLocaleString(LOC()),T("Pelanggan: ")+T(tx.c),"--------------------------------"];
+tx.it.forEach(function(i){L.push(i.n);L.push("  "+i.q+" x "+i.p.toLocaleString("id-ID")+" = "+(i.q*i.p).toLocaleString("id-ID"))});
+L.push("--------------------------------");if(tx.disc)L.push(T("Diskon: -")+tx.disc.toLocaleString("id-ID"));
+L.push("TOTAL: "+R(t),T("Bayar (")+T(m)+"): "+R(m=="Tunai"?r:t));if(m=="Tunai")L.push(T("Kembali: ")+R(r-t));L.push("",T("Terima kasih!"));
+$("rc").textContent=L.join("\n");$("rcw").classList.remove("hide");
+cart=[];$("disc").value=0;$("recv").value="";$("cust").value="";rcart();draw()}
+function tbl(){$("pc").innerHTML=CATS.map(function(c){return '<option value="'+esc(c)+'">'+esc(c)+"</option>"}).join("");
+$("pt").innerHTML=P.map(function(p){return "<tr><td>"+esc(p.n)+"</td><td>"+esc(p.c)+"</td><td>"+R(p.p)+"</td><td>"+(p.s==null?"Jasa":p.s)+'</td><td><button onclick="delP('+p.id+')">Hapus</button></td></tr>'}).join("")}
+function addP(){var n=$("pn").value.trim(),pr=+$("pp").value;if(!n||!pr){alert(T("Isi nama dan harga produk."));return}
+var s=$("ps").value===""?null:+$("ps").value,e=P.find(function(x){return x.n.toLowerCase()==n.toLowerCase()});
+if(e){e.p=pr;e.c=$("pc").value;e.s=s}else P.push({id:Date.now(),n:n,c:$("pc").value,p:pr,s:s});
+sv("pos_p",P);$("pn").value=$("pp").value=$("ps").value="";tbl();draw()}
+function delP(id){if(confirm(T("Hapus produk ini?"))){P=P.filter(function(x){return x.id!=id});sv("pos_p",P);tbl();draw()}}
+function rep(){var td=new Date().toDateString();
+$("rd").textContent=R(S.filter(function(x){return new Date(x.d).toDateString()==td}).reduce(function(a,x){return a+x.t},0));
+$("ra").textContent=R(S.reduce(function(a,x){return a+x.t},0));
+$("re").textContent=S.length?"":"Belum ada transaksi. Selesaikan transaksi di tab Kasir.";
+$("rt").innerHTML=S.map(function(x){return "<tr><td>"+new Date(x.d).toLocaleString(LOC())+"</td><td>"+esc(x.c)+"</td><td>"+x.it.map(function(i){return esc(i.n)+" x"+i.q}).join(", ")+"</td><td>"+x.m+"</td><td>"+R(x.t)+"</td></tr>"}).join("")}
+function csv(){var L=["waktu,pelanggan,item,bayar,total"].concat(S.map(function(x){return [x.d,x.c,x.it.map(function(i){return i.n+" x"+i.q}).join("; "),x.m,x.t].map(function(v){return '"'+String(v).replace(/"/g,'""')+'"'}).join(",")}));
+var a=document.createElement("a");a.href="data:text/csv;charset=utf-8,"+encodeURIComponent(L.join("\n"));a.download="penjualan.csv";a.click()}
+draw();
+
+</script>
+<script>
+var LANG="id",LOC=function(){return LANG=="en"?"en-GB":"id-ID"};
+(function(){
+var EN={
+"Jasa IT":"IT Services","Gitar":"Guitars","Laptop & PC":"Laptops & PCs","Jastip":"Personal Shopping","Hubungi saya":"Contact me","Konsultasi gratis":"Free consultation","Lihat hasil kerja":"See my work",
+"Server yang stabil, gitar yang pas, laptop yang siap kerja.":"Stable servers, the right guitar, a laptop ready for work.",
+"Saya Daniel. Saya membangun dan merawat infrastruktur IT untuk bisnis, dan menjual gitar, laptop, PC, serta layanan jastip untuk kebutuhan sehari-hari Anda.":"I'm Daniel. I build and maintain IT infrastructure for businesses, and sell guitars, laptops, PCs, and personal shopping (jastip) for your everyday needs.",
+"Server, jaringan, web":"Servers, networking, web","bekas terawat":"Well-kept used guitars","Rakit, jual, upgrade":"Build, sell, upgrade","Titip barang dari mana saja":"Buy anything, from anywhere",
+"Dari satu server kecil sampai jaringan kantor. Semua dikonfigurasi aman, didokumentasikan, dan bisa dipantau.":"From a single small server to an office network. Everything is configured securely, documented, and monitorable.",
+"Server & virtualisasi":"Servers & virtualization","Proxmox, KVM, Docker, dan VM Linux (Debian, Rocky, CentOS).":"Proxmox, KVM, Docker, and Linux VMs (Debian, Rocky, CentOS).",
+"Jaringan & VPN":"Networking & VPN","Mikrotik, WireGuard, dan Cloudflare Tunnel untuk akses jarak jauh yang aman.":"Mikrotik, WireGuard, and Cloudflare Tunnel for secure remote access.",
+"Aplikasi self-hosted":"Self-hosted apps","Nextcloud, mail server Zimbra, Roundcube, LDAP, dan monitoring Grafana.":"Nextcloud, Zimbra mail server, Roundcube, LDAP, and Grafana monitoring.",
+"Website & chatbot":"Websites & chatbots","Website responsif, chatbot, dan notifikasi alert real-time ke WhatsApp.":"Responsive websites, chatbots, and real-time alerts to WhatsApp.",
+"Akustik, elektrik, Setiap gitar dicek fret, neck, dan elektroniknya sebelum dijual.":"Acoustic and electric. Every guitar has its frets, neck, and electronics checked before sale.",
+"Gitar baru":"New guitars","Berbagai merek dan rentang harga, cocok untuk pemula sampai panggung.":"Various brands and price ranges, from beginners to the stage.","Tanya stok gitar":"Ask about guitar stock",
+"Unit siap pakai, rakitan sesuai budget, dan upgrade untuk perangkat lama Anda.":"Ready-to-use units, custom builds to fit your budget, and upgrades for your older devices.",
+"Laptop baru & bekas":"New & used laptops","Untuk kerja, kuliah, desain, dan coding. Unit bekas diuji dan bergaransi toko.":"For work, study, design, and coding. Used units are tested and come with a shop warranty.",
+"Rakit PC":"PC builds","Kantor, gaming, workstation, atau home server, sesuai kebutuhan dan budget.":"Office, gaming, workstation, or home server, to match your needs and budget.",
+"Upgrade & servis":"Upgrades & repairs","Tambah RAM, ganti SSD, instal ulang OS, dan pembersihan.":"RAM upgrades, SSD swaps, OS reinstalls, and cleaning.","Minta rekomendasi":"Get a recommendation",
+"Ada barang yang sulit dicari? Titip ke saya. Harga dan biaya jasa dijelaskan di depan, tanpa kejutan.":"Can't find something? Let me buy it for you. Prices and service fees are explained upfront, no surprises.",
+"Kirim permintaan":"Send a request","Link atau nama barang, jumlah, dan budget.":"Item link or name, quantity, and budget.","Terima penawaran":"Receive a quote","Harga barang, biaya jasa, dan estimasi tiba.":"Item price, service fee, and estimated arrival.",
+"Bayar":"Pay","Transfer atau e-wallet, bukti dikirim lewat chat.":"Bank transfer or e-wallet, proof sent via chat.","Barang dikirim":"Item shipped","Nomor resi diberikan begitu barang dikirim.":"A tracking number is shared as soon as it ships.",
+"Beberapa proyek IT yang sudah dikerjakan.":"Some of the IT projects I've completed.","Penyimpanan":"Storage","Private cloud Nextcloud":"Private cloud with Nextcloud","Keamanan":"Security","Login terpusat dengan LDAP":"Centralized login with LDAP",
+"Komunikasi":"Communication","Mail server Zimbra":"Zimbra mail server","Webmail Roundcube":"Roundcube webmail","Otomasi":"Automation","Dashboard monitoring":"Monitoring dashboard","Alert real-time ke WhatsApp":"Real-time alerts to WhatsApp",
+"Ceritakan kebutuhan Anda. Pesan akan dibuka di WhatsApp dan saya balas secepatnya.":"Tell me what you need. Your message opens in WhatsApp and I'll reply as soon as I can.",
+"Jam layanan:":"Opening hours:","Senin sampai Sabtu, 09.00 sampai 20.00":"Monday to Saturday, 9:00 to 20:00","Nama":"Name","Saya butuh":"I need","Pesan":"Message","Kirim lewat WhatsApp":"Send via WhatsApp",
+"Jasa IT, gitar, laptop & PC, jastip ·":"IT services, guitars, laptops & PCs, personal shopping ·","Kasir":"Cashier",
+"Kasir Daniel":"Daniel's Cashier","Kembali ke website":"Back to website","Produk":"Products","Laporan":"Reports","Cari produk":"Search products","Semua":"All","Produk tidak ditemukan.":"No products found.",
+"Keranjang":"Cart","Pilih produk untuk memulai.":"Select a product to start.","Diskon (Rp)":"Discount (Rp)","Pembayaran":"Payment","Tunai":"Cash","Uang diterima":"Amount received","Pelanggan":"Customer","Opsional":"Optional",
+"Kembalian":"Change","Selesaikan transaksi":"Complete sale","Kosongkan":"Clear cart","Tambah / ubah produk":"Add / edit product","Nama produk":"Product name","Harga jual (Rp)":"Selling price (Rp)",
+"Stok (kosong untuk jasa)":"Stock (leave empty for services)","Simpan produk":"Save product","Kategori":"Category","Harga":"Price","Stok":"Stock","Hapus":"Delete","Jasa":"Service",
+"Penjualan hari ini":"Today's sales","Semua transaksi":"All transactions","Unduh CSV":"Download CSV","Waktu":"Time","Item":"Items","Metode":"Method",
+"Belum ada transaksi. Selesaikan transaksi di tab Kasir.":"No sales yet. Complete a sale in the Cashier tab.","Cetak struk":"Print receipt","Umum":"General","Kurangi":"Decrease","Tambah":"Increase",
+"Stok habis: ":"Out of stock: ","Keranjang masih kosong.":"The cart is empty.","Uang diterima kurang dari total.":"Amount received is less than the total.","Isi nama dan harga produk.":"Enter a product name and price.",
+"Hapus produk ini?":"Delete this product?","Pelanggan: ":"Customer: ","Gitar | Laptop & PC | Jastip":"Guitars | Laptops & PCs | Personal Shopping","Diskon: -":"Discount: -","Bayar (":"Paid (","Kembali: ":"Change: ","Terima kasih!":"Thank you!"
+},RX=[[/^Stok (\d+)$/,"Stock $1"]],orig=new WeakMap(),meta=document.querySelector('meta[name=description]'),
+D={t:document.title,m:meta.content},E={t:"Daniel IT Solution | IT Services, Guitars, Laptops & PCs, Personal Shopping",m:"Daniel IT Solution: server, networking, and web services, plus guitars, laptops & PCs, and personal shopping (jastip)."};
+window.T=function(s){return LANG=="en"&&EN[s]!==undefined?EN[s]:s};
+function tx(s){var t=s.trim();if(!t)return s;var r=EN[t];if(r===undefined)for(var i=0;i<RX.length;i++)if(RX[i][0].test(t)){r=t.replace(RX[i][0],RX[i][1]);break}return r===undefined?s:s.replace(t,function(){return r})}
+function attr(root,a,d){root.querySelectorAll("["+a+"]").forEach(function(e){if(!e.dataset[d])e.dataset[d]=e.getAttribute(a);var o=e.dataset[d];e.setAttribute(a,LANG=="en"&&EN[o]?EN[o]:o)})}
+function apply(root){var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:function(n){var p=n.parentNode.nodeName;return p=="SCRIPT"||p=="STYLE"?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT}}),n;
+while(n=w.nextNode()){if(!orig.has(n))orig.set(n,n.nodeValue);n.nodeValue=LANG=="en"?tx(orig.get(n)):orig.get(n)}
+attr(root,"placeholder","ph");attr(root,"aria-label","al")}
+["draw","rcart","tbl","rep"].forEach(function(k){var f=window[k];window[k]=function(){var r=f.apply(this,arguments);apply(document.getElementById("pos"));return r}});
+window.setLang=function(l){LANG=l;try{localStorage.setItem("lang",l)}catch(e){}
+document.documentElement.lang=l;document.title=l=="en"?E.t:D.t;meta.content=l=="en"?E.m:D.m;
+draw();rcart();tbl();rep();apply(document.body);
+document.querySelectorAll(".lang button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.l==l)})};
+var sv;try{sv=localStorage.getItem("lang")}catch(e){}
+setLang(sv=="en"?"en":"id")})();
+</script>
+<script>
+(function(){var site=document.getElementById("site"),pos=document.getElementById("pos"),cur=null;
+function route(){var k=location.hash=="#kasir";site.classList.toggle("off",k);pos.classList.toggle("off",!k);
+if(cur!==null&&cur!==k)window.scrollTo(0,0);cur=k}
+window.addEventListener("hashchange",route);route()})();
+</script>
+</body>
+</html>

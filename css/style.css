@@ -1,0 +1,4 @@
+
+
+/* Hide Netlify Badge */
+#netlify-badge, [data-netlify-deploy-preview], iframe[src*="netlify"] { display: none !important; visibility: hidden !important; opacity: 0 !important; }
