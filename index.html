@@ -2,7 +2,7 @@
 <html lang="id" data-theme="dark">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>DaNiel S. | IT Services: Server, Jaringan, Chatbot & Web</title>
 <meta name="description" content="DaNiel S. menyediakan jasa IT: setup server, jaringan, aplikasi self-hosted, dan website. Hubungi lewat WhatsApp, LinkedIn, atau email.">
 <meta name="author" content="DaNiel S.">
@@ -25,24 +25,24 @@
   --bg:#0a1322; --bg2:#0f1b2d; --card:rgba(255,255,255,.035); --card-b:rgba(255,255,255,.09);
   --text:#e8eef6; --muted:#8fa0b6; --accent:#00d17a; --accent-l:#2dffa0; --on-accent:#04130c;
   --row:rgba(255,255,255,.045); --row-h:rgba(0,209,122,.10); --input:rgba(255,255,255,.05);
-  --shadow:0 24px 60px rgba(0,0,0,.4); --ic-bg:rgba(0,209,122,.12);
+  --shadow:0 24px 60px rgba(0,0,0,.4); --ic-bg:rgba(0,209,122,.12); --nav:rgba(10,19,34,.72);
 }
 html[data-theme="light"]{
   --bg:#eef2f7; --bg2:#fff; --card:rgba(255,255,255,.9); --card-b:#dde3ea;
   --text:#14233a; --muted:#5b6b80; --accent:#00a862; --accent-l:#00a862; --on-accent:#fff;
-  --row:#f4f6f9; --row-h:#e6f6ee; --input:#fff; --shadow:0 24px 60px rgba(15,27,45,.10); --ic-bg:#dff3ea;
+  --row:#f4f6f9; --row-h:#e6f6ee; --input:#fff; --shadow:0 24px 60px rgba(15,27,45,.10); --ic-bg:#dff3ea; --nav:rgba(238,242,247,.8);
 }
 html[data-theme="hacker"]{
   --bg:#000; --bg2:#000; --card:rgba(0,10,4,.8); --card-b:rgba(0,255,136,.25);
   --text:#c9ffe2; --muted:#6fcf9b; --accent:#00ff88; --accent-l:#7dffbd; --on-accent:#001a0d;
   --row:rgba(0,255,136,.06); --row-h:rgba(0,255,136,.16); --input:rgba(0,255,136,.07);
-  --shadow:0 0 40px rgba(0,255,136,.12); --ic-bg:rgba(0,255,136,.12);
+  --shadow:0 0 40px rgba(0,255,136,.12); --ic-bg:rgba(0,255,136,.12); --nav:rgba(0,0,0,.75);
 }
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:80px}
 body{
   margin:0;min-height:100vh;font-family:"Plus Jakarta Sans",system-ui,sans-serif;color:var(--text);
-  background:radial-gradient(900px 460px at 50% -8%,rgba(0,209,122,.13),transparent 62%),var(--bg);
+  background:radial-gradient(1100px 560px at 50% -10%,rgba(0,209,122,.14),transparent 62%),var(--bg);
   line-height:1.6;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s;
 }
 html[data-theme="hacker"] body{font-family:"JetBrains Mono",monospace;background:#000}
@@ -50,86 +50,134 @@ a{color:inherit}
 :focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 #matrix{position:fixed;inset:0;z-index:-1;display:none}
 html[data-theme="hacker"] #matrix{display:block}
+.container{width:min(1280px,100% - 48px);margin:0 auto}
 
-.page{width:min(560px,100% - 32px);margin:0 auto;padding:24px 0 96px}
-.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;gap:10px;flex-wrap:wrap}
-.status{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:500;color:var(--muted)}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--accent-l);box-shadow:0 0 0 0 rgba(0,255,136,.55);animation:pulse 2.4s infinite}
-@keyframes pulse{70%{box-shadow:0 0 0 7px rgba(0,255,136,0)}100%{box-shadow:0 0 0 0 rgba(0,255,136,0)}}
-.tools{display:flex;gap:8px}
+/* ---------- NAVBAR ---------- */
+.nav{position:sticky;top:0;z-index:30;background:var(--nav);border-bottom:1px solid var(--card-b);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.nav-in{display:flex;align-items:center;gap:20px;min-height:64px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.02em;text-decoration:none}
+.brand i{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;background:var(--bg2);border:1px solid var(--card-b);color:var(--accent-l);font-style:normal;font-size:.8rem}
+.menu{display:flex;gap:4px;margin:0 auto 0 12px;padding:0;list-style:none}
+.menu a{display:block;padding:8px 14px;border-radius:10px;color:var(--muted);text-decoration:none;font-size:.88rem;font-weight:500;transition:color .15s,background .15s}
+.menu a:hover{color:var(--text);background:var(--row)}
+.tools{display:flex;gap:8px;margin-left:auto}
 .seg{display:flex;border:1px solid var(--card-b);border-radius:10px;overflow:hidden;background:var(--card)}
 .seg button{background:none;border:0;color:var(--muted);font:inherit;font-size:.74rem;font-weight:700;padding:7px 11px;cursor:pointer;transition:color .15s}
 .seg button:hover{color:var(--text)}
 .seg button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent)}
 
-.card{background:var(--card);border:1px solid var(--card-b);border-radius:22px;padding:34px 26px 28px;box-shadow:var(--shadow);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);animation:rise .6s ease both}
-@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-
-.hero{text-align:center}
-.avatar{width:116px;height:116px;margin:0 auto 18px;border-radius:50%;padding:3px;background:conic-gradient(from 0deg,var(--accent),#2bb0ff,var(--accent-l),var(--accent))}
-.avatar img,.avatar .ph{width:100%;height:100%;border-radius:50%;object-fit:cover;border:3px solid var(--bg2);background:var(--bg2);display:block}
-.avatar .ph{display:none;place-items:center;font-weight:800;font-size:2rem;color:var(--accent-l)}
-.avatar.noimg img{display:none}.avatar.noimg .ph{display:grid}
-h1{margin:0;font-size:1.75rem;font-weight:800;letter-spacing:-.025em}
-.role{margin:6px 0 0;color:var(--accent-l);font-weight:700;font-size:.92rem;letter-spacing:.01em}
-.bio{margin:14px auto 0;color:var(--muted);font-size:.95rem;max-width:44ch}
-.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:20px 0 0;padding:0;list-style:none}
-.chips li{font-size:.75rem;font-weight:500;padding:5px 12px;border-radius:999px;border:1px solid var(--card-b);background:var(--row);color:var(--muted)}
-
-.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:26px 0 4px}
-.actions .btn-primary{grid-column:1/-1}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 18px;border-radius:12px;font:inherit;font-weight:700;font-size:.94rem;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .15s,background .15s,border-color .15s}
+/* ---------- HERO (full layar) ---------- */
+.hero{min-height:calc(100vh - 64px);min-height:calc(100svh - 64px);display:flex;align-items:center;padding:48px 0}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:64px;align-items:center;width:100%}
+.pill{display:inline-flex;align-items:center;gap:9px;padding:7px 14px;border-radius:999px;border:1px solid var(--card-b);background:var(--card);font-size:.8rem;font-weight:500;color:var(--muted)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--accent-l);box-shadow:0 0 0 0 rgba(0,255,136,.55);animation:pulse 2.4s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 7px rgba(0,255,136,0)}100%{box-shadow:0 0 0 0 rgba(0,255,136,0)}}
+h1{margin:20px 0 0;font-size:clamp(2.4rem,5.4vw,4.4rem);font-weight:800;letter-spacing:-.035em;line-height:1.05}
+h1 span{color:var(--accent-l)}
+.role{margin:14px 0 0;color:var(--accent-l);font-weight:700;font-size:1.05rem}
+.bio{margin:18px 0 0;color:var(--muted);font-size:1.08rem;max-width:56ch}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 0;padding:0;list-style:none}
+.chips li{font-size:.78rem;font-weight:500;padding:6px 13px;border-radius:999px;border:1px solid var(--card-b);background:var(--row);color:var(--muted)}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 22px;border-radius:12px;font:inherit;font-weight:700;font-size:.94rem;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .15s,background .15s,border-color .15s}
 .btn svg{width:19px;height:19px}
 .btn-primary{background:var(--accent);color:var(--on-accent)}
 .btn-primary:hover{background:var(--accent-l);transform:translateY(-2px)}
 .btn-primary:disabled{opacity:.6;cursor:wait;transform:none}
 .btn-ghost{background:var(--row);border-color:var(--card-b);color:var(--text)}
 .btn-ghost:hover{border-color:var(--accent);transform:translateY(-2px)}
-
-.btn-like b{font-weight:700;font-variant-numeric:tabular-nums}
+.btn-like b{font-variant-numeric:tabular-nums}
 .btn-like.liked{border-color:#ff4d6d;background:rgba(255,77,109,.12);cursor:default}
 .btn-like.liked:hover{transform:none}
 .btn-like.liked svg{fill:#ff4d6d;stroke:#ff4d6d}
 .btn-like.pop svg{animation:pop .45s ease}
 @keyframes pop{30%{transform:scale(1.45)}100%{transform:scale(1)}}
-.btn-like:disabled{opacity:.7}
-.sec{display:flex;align-items:center;gap:12px;margin:34px 0 14px;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.sec::after{content:"";flex:1;height:1px;background:var(--card-b)}
 
-.services{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0;padding:0;list-style:none}
-.svc{padding:16px;border-radius:14px;background:var(--row);border:1px solid var(--card-b)}
-.svc .ic{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:var(--ic-bg);color:var(--accent-l);margin-bottom:10px}
-.svc .ic svg{width:19px;height:19px}
-.svc b{display:block;font-size:.92rem;line-height:1.3;margin-bottom:4px}
-.svc p{margin:0;color:var(--muted);font-size:.8rem;line-height:1.5}
+.side{display:grid;justify-items:center;gap:26px}
+.avatar{width:clamp(180px,22vw,270px);aspect-ratio:1;border-radius:50%;padding:4px;background:conic-gradient(from 0deg,var(--accent),#2bb0ff,var(--accent-l),var(--accent));box-shadow:0 0 80px rgba(0,209,122,.18)}
+.avatar img,.avatar .ph{width:100%;height:100%;border-radius:50%;object-fit:cover;border:5px solid var(--bg2);background:var(--bg2);display:block}
+.avatar .ph{display:none;place-items:center;font-weight:800;font-size:3.4rem;color:var(--accent-l)}
+.avatar.noimg img{display:none}.avatar.noimg .ph{display:grid}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;max-width:420px}
+.stat{padding:14px 10px;border-radius:14px;background:var(--card);border:1px solid var(--card-b);text-align:center}
+.stat b{display:block;font-family:"JetBrains Mono",monospace;font-size:1.1rem;font-weight:500;color:var(--accent-l);font-variant-numeric:tabular-nums}
+.stat small{display:block;margin-top:2px;color:var(--muted);font-size:.7rem;letter-spacing:.04em}
 
-.links{display:grid;gap:10px;margin:0;padding:0;list-style:none}
-.link{display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:14px;background:var(--row);border:1px solid transparent;text-decoration:none;transition:transform .2s,background .2s,border-color .2s}
-.link:hover{transform:translateY(-3px);background:var(--row-h);border-color:var(--accent)}
-.link .ic{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:var(--ic-bg);color:var(--accent-l);flex:none}
-.link .ic svg{width:20px;height:20px}
-.link b{display:block;font-size:.93rem;line-height:1.3}
-.link small{display:block;color:var(--muted);font-size:.78rem}
-.link .go{margin-left:auto;width:18px;height:18px;color:var(--muted);transition:transform .2s,color .2s;flex:none}
-.link:hover .go{transform:translateX(4px);color:var(--accent-l)}
+/* ---------- SECTIONS ---------- */
+section.block{padding:72px 0}
+.sec-head{margin-bottom:32px}
+.eyebrow{font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-l)}
+.sec-head h2{margin:6px 0 0;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;letter-spacing:-.02em}
+.sec-head p{margin:8px 0 0;color:var(--muted);max-width:60ch}
 .ic svg,.btn svg,.go,.sym{fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 
-form{display:grid;gap:12px}
-label{display:grid;gap:5px;font-size:.82rem;font-weight:500;color:var(--muted)}
-input,textarea{font:inherit;font-size:.92rem;color:var(--text);background:var(--input);border:1px solid var(--card-b);border-radius:12px;padding:11px 13px;width:100%}
-textarea{min-height:100px;resize:vertical}
-input:focus,textarea:focus{outline:none;border-color:var(--accent)}
-.hp{position:absolute;left:-9999px}
-.note{min-height:1.2em;margin:0;font-size:.84rem;color:var(--accent-l);text-align:center}
-.note.err{color:#ff6b81}
+.services{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:0;padding:0;list-style:none}
+.svc{padding:24px;border-radius:18px;background:var(--card);border:1px solid var(--card-b);transition:transform .2s,border-color .2s}
+.svc:hover{transform:translateY(-4px);border-color:var(--accent)}
+.svc .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--ic-bg);color:var(--accent-l);margin-bottom:16px}
+.svc .ic svg{width:22px;height:22px}
+.svc b{display:block;font-size:1.02rem;line-height:1.3;margin-bottom:6px}
+.svc p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.55}
 
-footer{text-align:center;margin-top:24px;color:var(--muted);font-size:.78rem}
-.wa-float{position:fixed;right:20px;bottom:20px;width:56px;height:56px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;box-shadow:0 8px 22px rgba(0,0,0,.35);z-index:20;transition:transform .2s}
+.links{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0;padding:0;list-style:none}
+.link{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:16px;background:var(--card);border:1px solid var(--card-b);text-decoration:none;transition:transform .2s,background .2s,border-color .2s}
+.link:hover{transform:translateY(-3px);background:var(--row-h);border-color:var(--accent)}
+.link .ic{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;background:var(--ic-bg);color:var(--accent-l);flex:none}
+.link .ic svg{width:21px;height:21px}
+.link b{display:block;font-size:.96rem;line-height:1.3}
+.link small{display:block;color:var(--muted);font-size:.8rem;overflow-wrap:anywhere}
+.link .go{margin-left:auto;width:18px;height:18px;color:var(--muted);transition:transform .2s,color .2s;flex:none}
+.link:hover .go{transform:translateX(4px);color:var(--accent-l)}
+
+/* ---------- GUESTBOOK ---------- */
+.gb{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:20px;align-items:start}
+.panel{background:var(--card);border:1px solid var(--card-b);border-radius:20px;padding:26px;box-shadow:var(--shadow)}
+form{display:grid;gap:14px}
+label{display:grid;gap:6px;font-size:.84rem;font-weight:500;color:var(--muted)}
+input,textarea{font:inherit;font-size:.94rem;color:var(--text);background:var(--input);border:1px solid var(--card-b);border-radius:12px;padding:12px 14px;width:100%}
+textarea{min-height:120px;resize:vertical}
+input:focus,textarea:focus{outline:none;border-color:var(--accent)}
+.note{min-height:1.2em;margin:0;font-size:.84rem;color:var(--accent-l)}
+.note.err{color:#ff6b81}
+.gb-list{display:grid;gap:10px;max-height:460px;overflow-y:auto;padding-right:4px}
+.gb-item{padding:14px 16px;border-radius:14px;background:var(--row);border:1px solid var(--card-b)}
+.gb-head{display:flex;align-items:center;gap:10px;font-size:.78rem;margin-bottom:4px}
+.gb-name{font-weight:700;color:var(--accent-l)}
+.gb-time{margin-left:auto;color:var(--muted)}
+.gb-del{background:none;border:0;color:#ff6b81;font:inherit;font-size:.76rem;cursor:pointer;padding:0}
+.gb-msg{margin:0;font-size:.9rem;overflow-wrap:anywhere;white-space:pre-wrap}
+.gb-empty{margin:0;color:var(--muted);font-size:.9rem;text-align:center;padding:24px 0}
+
+/* ---------- FOOTER ---------- */
+footer{border-top:1px solid var(--card-b);padding:28px 0 40px;color:var(--muted);font-size:.82rem}
+.foot{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
+.admin-btn{background:none;border:0;color:var(--muted);font:inherit;font-size:.78rem;cursor:pointer;opacity:.7}
+.admin-btn:hover{opacity:1;color:var(--text)}
+.wa-float{position:fixed;right:20px;bottom:20px;width:56px;height:56px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;box-shadow:0 8px 22px rgba(0,0,0,.35);z-index:40;transition:transform .2s}
 .wa-float:hover{transform:scale(1.08)}
 
-@media (max-width:440px){
-  .card{padding:28px 16px 22px}
-  .services{grid-template-columns:1fr}
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:1100px){
+  .services{grid-template-columns:repeat(2,1fr)}
+  .links{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:40px;text-align:center}
+  .hero-text{order:2}
+  .side{order:1}
+  .bio{margin-left:auto;margin-right:auto}
+  .chips,.actions{justify-content:center}
+  .gb{grid-template-columns:1fr}
+  .menu{display:none}
+}
+@media (max-width:640px){
+  .container{width:min(100% - 32px,1280px)}
+  .services,.links{grid-template-columns:1fr}
+  .nav-in{flex-wrap:wrap;padding:8px 0}
+  .brand span{display:none}
+  .btn{width:100%}
+  section.block{padding:52px 0}
+  .panel{padding:20px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
@@ -155,11 +203,17 @@ footer{text-align:center;margin-top:24px;color:var(--muted);font-size:.78rem}
 
 <canvas id="matrix" aria-hidden="true"></canvas>
 
-<main class="page">
-  <div class="topbar">
-    <span class="status"><span class="dot"></span><span data-i18n="status">Tersedia untuk proyek baru</span></span>
+<!-- ===================== NAVBAR ===================== -->
+<header class="nav">
+  <div class="container nav-in">
+    <a class="brand" href="#home" aria-label="DaNiel S."><i>DS</i><span>DaNiel S.</span></a>
+    <ul class="menu">
+      <li><a href="#layanan" data-i18n="nav_services">Layanan</a></li>
+      <li><a href="#tautan" data-i18n="nav_links">Tautan</a></li>
+      <li><a href="#pesan" data-i18n="nav_guest">Buku Tamu</a></li>
+    </ul>
     <div class="tools">
-      <div class="seg" role="group" aria-label="Bahasa / Language" data-i18n-aria="lang_aria">
+      <div class="seg" role="group" aria-label="Bahasa" data-i18n-aria="lang_aria">
         <button type="button" data-lang="id" aria-pressed="true">ID</button>
         <button type="button" data-lang="en" aria-pressed="false">EN</button>
       </div>
@@ -171,66 +225,155 @@ footer{text-align:center;margin-top:24px;color:var(--muted);font-size:.78rem}
       </div>
     </div>
   </div>
+</header>
 
-  <section class="card" aria-labelledby="nama">
-    <div class="hero">
-      <div class="avatar" id="avatar">
-        <img src="aloyy.jpeg" alt="Foto DaNiel S." data-i18n-alt="avatar_alt" width="116" height="116" onerror="document.getElementById('avatar').classList.add('noimg')">
-        <div class="ph" aria-hidden="true">DS</div>
-      </div>
-      <h1 id="nama">DaNiel S.</h1>
-      <p class="role" data-i18n="role">IT Services · Server, Jaringan,  Chatbot & Web</p>
+<main id="home">
+
+<!-- ===================== HERO ===================== -->
+<div class="container hero">
+  <div class="hero-grid">
+    <div class="hero-text">
+      <span class="pill"><span class="dot"></span><span data-i18n="status">Tersedia untuk proyek baru</span></span>
+      <h1>DaNiel <span>S.</span></h1>
+      <p class="role" data-i18n="role">IT Services · Server, Jaringan, Chatbot & Web</p>
       <p class="bio" data-i18n="bio">Membantu bisnis dan tim membangun infrastruktur IT yang stabil, aman, dan mudah dikelola. Juga menjual produk teknologi, gitar, dan barang lainnya.</p>
       <ul class="chips" aria-label="Keahlian" data-i18n-aria="skills_aria">
         <li>Proxmox &amp; KVM</li><li>Docker</li><li>Mikrotik</li><li>WireGuard</li><li>Nextcloud</li><li>Zimbra</li><li>LDAP</li>
       </ul>
+      <div class="actions">
+        <a class="btn btn-primary" data-wa="wa_consult" href="https://wa.me/6282366737623" target="_blank" rel="noopener noreferrer">
+          <svg class="sym"><use href="#i-wa"/></svg><span data-i18n="cta">Konsultasi via WhatsApp</span>
+        </a>
+        <button class="btn btn-ghost btn-like" id="likeBtn" type="button" aria-pressed="false">
+          <svg class="sym"><use href="#i-heart"/></svg><b id="likeCount">0</b><span id="likeLabel">Suka</span>
+        </button>
+        <button class="btn btn-ghost" id="shareBtn" type="button" aria-label="Bagikan halaman ini" data-i18n-aria="share_aria">
+          <svg class="sym"><use href="#i-share"/></svg><span id="shareLabel" data-i18n="share">Bagikan</span>
+        </button>
+      </div>
     </div>
 
-    <div class="actions">
-      <a class="btn btn-primary" data-wa="wa_consult" href="https://wa.me/6282366737623" target="_blank" rel="noopener noreferrer">
-        <svg class="sym"><use href="#i-wa"/></svg><span data-i18n="cta">Konsultasi via WhatsApp</span>
-      </a>
-      <button class="btn btn-ghost btn-like" id="likeBtn" type="button" aria-pressed="false">
-        <svg class="sym"><use href="#i-heart"/></svg><b id="likeCount">0</b><span id="likeLabel">Suka</span>
-      </button>
-      <button class="btn btn-ghost" id="shareBtn" type="button" aria-label="Bagikan halaman ini" data-i18n-aria="share_aria">
-        <svg class="sym"><use href="#i-share"/></svg><span id="shareLabel" data-i18n="share">Bagikan</span>
-      </button>
+    <div class="side">
+      <div class="avatar" id="avatar">
+        <img src="aloyy.jpeg" alt="Foto DaNiel S." data-i18n-alt="avatar_alt" width="270" height="270" onerror="document.getElementById('avatar').classList.add('noimg')">
+        <div class="ph" aria-hidden="true">DS</div>
+      </div>
+      <div class="stats">
+        <div class="stat"><b id="viewCount">–</b><small data-i18n="st_views">KUNJUNGAN</small></div>
+        <div class="stat"><b id="clock">--:--:--</b><small data-i18n="st_time">WAKTU LOKAL</small></div>
+        <div class="stat"><b>ONLINE</b><small data-i18n="st_status">STATUS</small></div>
+      </div>
     </div>
+  </div>
+</div>
 
-    <h2 class="sec" data-i18n="sec_services">Layanan</h2>
+<!-- ===================== LAYANAN ===================== -->
+<section class="block" id="layanan">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow" data-i18n="eb_services">Apa yang saya kerjakan</span>
+      <h2 data-i18n="sec_services">Layanan</h2>
+    </div>
     <ul class="services">
       <li class="svc"><span class="ic"><svg><use href="#i-server"/></svg></span><b data-i18n="s1t">Setup Server</b><p data-i18n="s1d">Proxmox, Docker, dan VM Linux yang rapi dan siap produksi.</p></li>
       <li class="svc"><span class="ic"><svg><use href="#i-shield"/></svg></span><b data-i18n="s2t">Jaringan & VPN</b><p data-i18n="s2d">Mikrotik, WireGuard, dan tunneling untuk akses remote yang aman.</p></li>
       <li class="svc"><span class="ic"><svg><use href="#i-cloud"/></svg></span><b data-i18n="s3t">Aplikasi Self-Hosted</b><p data-i18n="s3d">Nextcloud, Zimbra, LDAP, plus monitoring Grafana dan Uptime Kuma.</p></li>
       <li class="svc"><span class="ic"><svg><use href="#i-code"/></svg></span><b data-i18n="s4t">Pembuatan Website</b><p data-i18n="s4d">Website responsif, cepat, dan mudah dirawat.</p></li>
     </ul>
+  </div>
+</section>
 
-    <h2 class="sec" data-i18n="sec_links">Tautan</h2>
+<!-- ===================== TAUTAN ===================== -->
+<section class="block" id="tautan">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow" data-i18n="eb_links">Terhubung dengan saya</span>
+      <h2 data-i18n="sec_links">Tautan</h2>
+    </div>
     <ul class="links">
-
-      <li><a class="link" href="index_1.html" target="_blank" rel="noopener noreferrer"><span class="ic"><svg><use href="#i-globe"/></svg></span><span><b>Website</b><small>Portfolio & creative work</small></span><svg class="go"><use href="#i-chev"/></svg></a></li>
-      <li><a class="link" href="https://github.com/Daniel212alloy" target="_blank" rel="noopener noreferrer"><span class="ic"><svg><use href="#i-github"/></svg></span><span><b>GitHub</b><small data-i18n="l_gh">Kode & proyek</small></span><svg class="go"><use href="#i-chev"/></svg></a></li>
-      <li><a class="link" href="https://www.linkedin.com/in/daniel-saragih-99b36b179/" target="_blank" rel="noopener noreferrer"><span class="ic"><svg><use href="#i-in"/></svg></span><span><b>LinkedIn</b><small data-i18n="l_in">Profil profesional</small></span><svg class="go"><use href="#i-chev"/></svg></a></li>
-      <li><a class="link" href="https://instagram.com/daniel.usermod" target="_blank" rel="noopener noreferrer"><span class="ic"><svg><use href="#i-insta"/></svg></span><span><b>Instagram</b><small>@daniel.usermod</small></span><svg class="go"><use href="#i-chev"/></svg></a></li>
-      <li><a class="link" href="https://www.olx.co.id/profile/92362537" target="_blank" rel="noopener noreferrer"><span class="ic"><svg><use href="#i-bag"/></svg></span><span><b>OLX</b><small data-i18n="l_olx">Produk & barang dijual</small></span><svg class="go"><use href="#i-chev"/></svg></a></li>
-      <li><a class="link" data-mail="1" href="mailto:danielsaragih212@gmail.com"><span class="ic"><svg><use href="#i-mail"/></svg></span><span><b>Email</b><small>danielsaragih212@gmail.com</small></span><svg class="go"><use href="#i-chev"/></svg></a></li>
+      <li>
+        <a class="link" href="http://web.aloy-tech.my.id/creative/" target="_blank" rel="noopener noreferrer">
+          <span class="ic"><svg><use href="#i-globe"/></svg></span>
+          <span>
+            <b>Website</b>
+            <small data-i18n="l_web"></small>
+          </span>
+          <svg class="go"><use href="#i-chev"/></svg>
+        </a>
+      </li>
+      <li>
+        <a class="link" href="https://github.com/Daniel212alloy" target="_blank" rel="noopener noreferrer">
+          <span class="ic"><svg><use href="#i-github"/></svg></span>
+          <span>
+            <b>GitHub</b>
+            <small data-i18n="l_gh"></small>
+          </span>
+          <svg class="go"><use href="#i-chev"/></svg>
+        </a>
+      </li>
+      <li>
+        <a class="link" href="https://www.linkedin.com/in/daniel-saragih-99b36b179/" target="_blank" rel="noopener noreferrer">
+          <span class="ic"><svg><use href="#i-in"/></svg></span>
+          <span>
+            <b>LinkedIn</b>
+            <small data-i18n="l_in"></small>
+          </span>
+          <svg class="go"><use href="#i-chev"/></svg>
+        </a>
+      </li>
+      <li>
+        <a class="link" href="https://instagram.com/daniel.usermod" target="_blank" rel="noopener noreferrer">
+          <span class="ic"><svg><use href="#i-insta"/></svg></span>
+          <span>
+            <b>Instagram</b>
+            <small>@daniel.usermod</small>
+          </span>
+          <svg class="go"><use href="#i-chev"/></svg>
+        </a>
+      </li>
+      <li>
+        <a class="link" href="https://www.olx.co.id/profile/92362537" target="_blank" rel="noopener noreferrer">
+          <span class="ic"><svg><use href="#i-bag"/></svg></span>
+          <span>
+            <b>OLX</b>
+            <small data-i18n="l_olx"></small>
+          </span>
+          <svg class="go"><use href="#i-chev"/></svg>
+        </a>
+      </li>
+      <li>
+        <a class="link" href="mailto:danielsaragih212@gmail.com" data-mail="1">
+          <span class="ic"><svg><use href="#i-mail"/></svg></span>
+          <span>
+            <b>Email</b>
+            <small>danielsaragih212@gmail.com</small>
+          </span>
+          <svg class="go"><use href="#i-chev"/></svg>
+        </a>
+      </li>
     </ul>
+  </div>
+</section>
 
-    <h2 class="sec" data-i18n="sec_contact">Kirim pesan</h2>
-    <form name="kontak" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" id="cform">
-      <input type="hidden" name="form-name" value="kontak">
-      <p class="hp"><label>Jangan diisi: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
-      <label><span data-i18n="f_name">Nama</span><input name="nama" required maxlength="40" autocomplete="name" placeholder="Nama kamu" data-i18n-ph="f_name_ph"></label>
-      <label><span data-i18n="f_msg">Pesan</span><textarea name="pesan" required maxlength="500" placeholder="Tulis kebutuhan atau pesan singkat..." data-i18n-ph="f_msg_ph"></textarea></label>
-      <button class="btn btn-primary" type="submit" id="sendBtn" data-i18n="f_send">Kirim pesan</button>
-      <p class="note" id="formNote" role="status" aria-live="polite"></p>
-    </form>
-  </section>
+<!-- ===================== BUKU TAMU ===================== -->
+<section class="block" id="pesan">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow" data-i18n="eb_guest">Tinggalkan jejak</span>
+      <h2 data-i18n="sec_guest">Pesan Pengunjung</h2>
+      <p data-i18n="guest_sub">Tulis pesan singkat, saran, atau sekadar sapaan. Pesan akan tampil di sini (perlu akun GitHub).</p>
+    </div>
+    <div class="panel" id="giscusBox"></div>
+  </div>
+</section>
 
-
-  <footer>&copy; <span id="yr">2026</span> DaNiel S. · <span data-i18n="foot">Built with Linux 🧸</span></footer>
 </main>
+
+<footer>
+  <div class="container foot">
+    <span>&copy; <span id="year"></span> DaNiel S. · <span data-i18n="foot">Built with Linux 🧸</span></span>
+  </div>
+</footer>
 
 <a class="wa-float" data-wa="wa_float" href="https://wa.me/6282366737623" target="_blank" rel="noopener noreferrer" aria-label="Chat via WhatsApp">
   <svg class="sym" style="width:28px;height:28px"><use href="#i-wa"/></svg>
@@ -240,55 +383,66 @@ footer{text-align:center;margin-top:24px;color:var(--muted);font-size:.78rem}
 (function(){
   var root=document.documentElement;
 
-  /* ================= Terjemahan ================= */
+  /* ================= Terjemahan ID / EN ================= */
   var T={
     id:{
       title:"DaNiel S. | IT Services: Server, Jaringan, Chatbot & Web",
       desc:"DaNiel S. menyediakan jasa IT: setup server, jaringan, aplikasi self-hosted, dan website. Hubungi lewat WhatsApp, LinkedIn, atau email.",
       ogd:"Setup server, jaringan, aplikasi self-hosted, dan website. Konsultasi gratis.",
       status:"Tersedia untuk proyek baru", lang_aria:"Bahasa", theme_aria:"Tema tampilan", theme_light:"Terang", theme_dark:"Gelap",
+      nav_services:"Layanan", nav_links:"Tautan", nav_guest:"Buku Tamu",
       avatar_alt:"Foto DaNiel S.", skills_aria:"Keahlian",
       role:"IT Services · Server, Jaringan, Chatbot & Web",
       bio:"Membantu bisnis dan tim membangun infrastruktur IT yang stabil, aman, dan mudah dikelola. Juga menjual produk teknologi, gitar, dan barang lainnya.",
       cta:"Konsultasi via WhatsApp", like:"Suka", liked:"Disukai", like_aria:"Sukai halaman ini", share:"Bagikan", share_ok:"Tersalin!", share_aria:"Bagikan halaman ini",
-      sec_services:"Layanan",
+      st_views:"KUNJUNGAN", st_time:"WAKTU LOKAL", st_status:"STATUS",
+      eb_services:"Apa yang saya kerjakan", sec_services:"Layanan",
       s1t:"Setup Server", s1d:"Proxmox, Docker, dan VM Linux yang rapi dan siap produksi.",
       s2t:"Jaringan & VPN", s2d:"Mikrotik, WireGuard, dan tunneling untuk akses remote yang aman.",
       s3t:"Aplikasi Self-Hosted", s3d:"Nextcloud, Zimbra, LDAP, plus monitoring Grafana dan Uptime Kuma.",
       s4t:"Pembuatan Website", s4d:"Website responsif, cepat, dan mudah dirawat.",
-      sec_links:"Tautan",
+      eb_links:"Terhubung dengan saya", sec_links:"Tautan",
       l_web:"Portofolio & karya kreatif", l_gh:"Kode & proyek", l_in:"Profil profesional", l_olx:"Produk & barang dijual",
-      sec_contact:"Kirim pesan",
-      f_name:"Nama", f_name_ph:"Nama kamu", f_msg:"Pesan", f_msg_ph:"Tulis kebutuhan atau pesan singkat...", f_send:"Kirim pesan",
-      f_sending:"Mengirim...", f_ok:"Terkirim. Terima kasih, saya balas secepatnya.", f_err:"Gagal mengirim. Silakan hubungi lewat WhatsApp.",
+      eb_guest:"Tinggalkan jejak", sec_guest:"Pesan Pengunjung", guest_sub:"Tulis pesan singkat, saran, atau sekadar sapaan. Pesan akan tampil di sini.",
+      f_name:"Nama", f_name_ph:"Nama kamu", f_msg:"Pesan", f_msg_ph:"Tulis pesan singkat...", f_send:"Kirim pesan",
+      f_sending:"Mengirim...", f_ok:"Terkirim. Terima kasih atas pesannya!", f_fill:"Isi nama dan pesan dulu ya.", f_err:"Gagal mengirim pesan, coba lagi.",
+      gb_loading:"Memuat pesan...", gb_empty:"Belum ada pesan. Jadilah yang pertama!", gb_del:"Hapus", gb_confirm:"Yakin mau menghapus pesan ini?",
+      gb_pass:"Password admin:", gb_bad:"Password admin salah atau sudah kedaluwarsa. Silakan login ulang.", gb_delfail:"Gagal menghapus pesan.",
+      admin_in:"🔒 Admin", admin_out:"🔓 Keluar admin",
       foot:"Built with Linux 🧸",
       wa_consult:"Halo Daniel, saya ingin konsultasi IT.", wa_float:"Halo Daniel, saya lihat profil kamu.",
-      mail_subj:"Halo Daniel"
+      mail_subj:"Halo Daniel", loc:"id-ID"
     },
     en:{
       title:"DaNiel S. | IT Services: Servers, Networking, Chatbot & Web",
       desc:"DaNiel S. offers IT services: server setup, networking, self-hosted applications, and websites. Reach out via WhatsApp, LinkedIn, or email.",
       ogd:"Server, network, self-hosted app, and website setup. Free consultation.",
       status:"Available for new projects", lang_aria:"Language", theme_aria:"Display theme", theme_light:"Light", theme_dark:"Dark",
+      nav_services:"Services", nav_links:"Connect", nav_guest:"Guestbook",
       avatar_alt:"Photo of DaNiel S.", skills_aria:"Skills",
       role:"IT Services · Servers, Networking, Chatbot & Web",
       bio:"I help businesses and teams build stable, secure, and easy-to-manage IT infrastructure. I also sell tech products, guitars, and other goods.",
       cta:"Consult via WhatsApp", like:"Like", liked:"Liked", like_aria:"Like this page", share:"Share", share_ok:"Copied!", share_aria:"Share this page",
-      sec_services:"Services",
+      st_views:"VISITS", st_time:"LOCAL TIME", st_status:"STATUS",
+      eb_services:"What I do", sec_services:"Services",
       s1t:"Server Setup", s1d:"Clean, production-ready Proxmox, Docker, and Linux VMs.",
       s2t:"Network & VPN", s2d:"Mikrotik, WireGuard, and tunneling for secure remote access.",
       s3t:"Self-Hosted Apps", s3d:"Nextcloud, Zimbra, LDAP, plus Grafana and Uptime Kuma monitoring.",
       s4t:"Web Development", s4d:"Responsive, fast, and easy-to-maintain websites.",
-      sec_links:"Connect",
+      eb_links:"Get in touch", sec_links:"Connect",
       l_web:"Portfolio & creative work", l_gh:"Code & projects", l_in:"Professional profile", l_olx:"Products & items for sale",
-      sec_contact:"Send a message",
-      f_name:"Name", f_name_ph:"Your name", f_msg:"Message", f_msg_ph:"Tell me what you need or leave a short message...", f_send:"Send message",
-      f_sending:"Sending...", f_ok:"Sent. Thank you, I'll reply as soon as possible.", f_err:"Failed to send. Please reach out via WhatsApp instead.",
+      eb_guest:"Leave a note", sec_guest:"Visitor Messages", guest_sub:"Leave a short message, feedback, or just say hi. It will show up here (GitHub account required).",
+      f_name:"Name", f_name_ph:"Your name", f_msg:"Message", f_msg_ph:"Write a short message...", f_send:"Send message",
+      f_sending:"Sending...", f_ok:"Sent. Thanks for your message!", f_fill:"Please fill in your name and message.", f_err:"Failed to send the message, please try again.",
+      gb_loading:"Loading messages...", gb_empty:"No messages yet. Be the first!", gb_del:"Delete", gb_confirm:"Delete this message?",
+      gb_pass:"Admin password:", gb_bad:"Wrong or expired admin password. Please log in again.", gb_delfail:"Failed to delete the message.",
+      admin_in:"🔒 Admin", admin_out:"🔓 Log out",
       foot:"Built with Linux 🧸",
       wa_consult:"Hello Daniel, I'd like an IT consultation.", wa_float:"Hello Daniel, I saw your profile.",
-      mail_subj:"Hello Daniel"
+      mail_subj:"Hello Daniel", loc:"en-US"
     }
   };
+
   var lang='id';
   var saved=null; try{saved=localStorage.getItem('lang');}catch(e){}
   if(saved==='id'||saved==='en') lang=saved;
@@ -305,19 +459,17 @@ footer{text-align:center;margin-top:24px;color:var(--muted);font-size:.78rem}
     root.lang=l;
     document.title=d.title; mDesc.content=d.desc; mOgD.content=d.ogd;
     mOgT.content=d.title.split(':')[0]; mOgL.content=(l==='en'?'en_US':'id_ID');
-    document.querySelectorAll('[data-i18n]').forEach(function(el){ el.textContent=d[el.dataset.i18n]; });
+    document.querySelectorAll('[data-i18n]').forEach(function(el){ if(d[el.dataset.i18n]!=null) el.textContent=d[el.dataset.i18n]; });
     document.querySelectorAll('[data-i18n-ph]').forEach(function(el){ el.placeholder=d[el.dataset.i18nPh]; });
     document.querySelectorAll('[data-i18n-alt]').forEach(function(el){ el.alt=d[el.dataset.i18nAlt]; });
     document.querySelectorAll('[data-i18n-aria]').forEach(function(el){ el.setAttribute('aria-label',d[el.dataset.i18nAria]); });
-    document.querySelectorAll('[data-wa]').forEach(function(a){
-      a.href='https://wa.me/6282366737623?text='+encodeURIComponent(d[a.dataset.wa]);
-    });
-    document.querySelectorAll('[data-mail]').forEach(function(a){
-      a.href='mailto:danielsaragih212@gmail.com?subject='+encodeURIComponent(d.mail_subj);
-    });
+    document.querySelectorAll('[data-wa]').forEach(function(a){ a.href='https://wa.me/6282366737623?text='+encodeURIComponent(d[a.dataset.wa]); });
+    document.querySelectorAll('[data-mail]').forEach(function(a){ a.href='mailto:danielsaragih212@gmail.com?subject='+encodeURIComponent(d.mail_subj); });
     document.querySelectorAll('[data-lang]').forEach(function(b){ b.setAttribute('aria-pressed',b.dataset.lang===l); });
     try{localStorage.setItem('lang',l);}catch(e){}
-    if(typeof renderLike==='function' && likeBtn) renderLike();
+    var vc=document.getElementById('viewCount');
+    if(vc.dataset.n) vc.textContent=Number(vc.dataset.n).toLocaleString(d.loc);
+    renderLike(); tick();
   }
   document.querySelectorAll('[data-lang]').forEach(function(b){
     b.addEventListener('click',function(){ applyLang(b.dataset.lang); });
@@ -364,6 +516,11 @@ footer{text-align:center;margin-top:24px;color:var(--muted);font-size:.78rem}
   function stopMatrix(){ if(timer){clearInterval(timer);timer=null;} ctx.clearRect(0,0,cv.width,cv.height); }
   window.addEventListener('resize',function(){ if(timer) sizeMatrix(); });
 
+  /* ================= Jam ================= */
+  var clockEl=document.getElementById('clock');
+  function tick(){ clockEl.textContent=new Date().toLocaleTimeString(t('loc'),{hour12:false}); }
+  setInterval(tick,1000);
+
   /* ================= Share ================= */
   var shareLabel=document.getElementById('shareLabel');
   document.getElementById('shareBtn').addEventListener('click',function(){
@@ -377,57 +534,84 @@ footer{text-align:center;margin-top:24px;color:var(--muted);font-size:.78rem}
     }
   });
 
-  /* ================= Like (Abacus counter API) ================= */
-  var LIKE_BASE='https://abacus.jasoncameron.dev';
-  var LIKE_NS='daniel-systems-profile', LIKE_KEY='likes';
+  /* ================= Konfigurasi ================= */
+  var CFG={
+    counterNS:'daniel212alloy-site',   /* nama unik untuk counter kunjungan & like */
+    giscus:{repo:'',repoId:'',category:'',categoryId:''}  /* isi dari giscus.app agar Buku Tamu aktif */
+  };
+
+  /* ================= Counter (counterapi.dev) ================= */
+  function counter(key,up){
+    return fetch('https://api.counterapi.dev/v1/'+CFG.counterNS+'/'+key+(up?'/up':''))
+      .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function(d){ return Number(d.count!=null?d.count:d.value)||0; });
+  }
+
+  /* Views: 1 per pengunjung per 6 jam, bot tidak dihitung */
+  var isBot=/bot|crawl|spider|slurp|curl|wget|preview|monitor|uptime/i.test(navigator.userAgent);
+  function loadViews(){
+    var last=0; try{ last=Number(localStorage.getItem('ds_seen'))||0; }catch(e){}
+    var bump=!isBot && (Date.now()-last>6*3600*1000);
+    counter('views',bump).then(function(n){
+      if(bump){ try{ localStorage.setItem('ds_seen',String(Date.now())); }catch(e){} }
+      var vc=document.getElementById('viewCount');
+      vc.dataset.n=n; vc.textContent=n.toLocaleString(t('loc'));
+    }).catch(function(){});
+  }
+
+  /* ================= Like ================= */
   var likeBtn=document.getElementById('likeBtn'), likeCountEl=document.getElementById('likeCount'), likeLabel=document.getElementById('likeLabel');
   var likeCount=0, hasLiked=false;
   try{ hasLiked=localStorage.getItem('hasLiked')==='1'; }catch(e){}
 
   function renderLike(){
-    likeCountEl.textContent=likeCount.toLocaleString(lang==='en'?'en-US':'id-ID');
+    likeCountEl.textContent=likeCount.toLocaleString(t('loc'));
     likeLabel.textContent=hasLiked?t('liked'):t('like');
     likeBtn.classList.toggle('liked',hasLiked);
     likeBtn.setAttribute('aria-pressed',hasLiked);
     likeBtn.setAttribute('aria-label',t('like_aria')+' ('+likeCountEl.textContent+')');
   }
   function loadLikes(){
-    fetch(LIKE_BASE+'/get/'+LIKE_NS+'/'+LIKE_KEY)
-      .then(function(r){ return r.ok ? r.json() : {value:0}; })   /* 404 = belum ada like */
-      .then(function(d){ likeCount=Number(d.value)||0; renderLike(); })
-      .catch(function(){ renderLike(); });
+    counter('likes',false).then(function(n){ likeCount=n; renderLike(); }).catch(function(){ renderLike(); });
   }
   likeBtn.addEventListener('click',function(){
     if(hasLiked) return;
-    hasLiked=true; likeCount++; renderLike();               /* tampil langsung */
+    hasLiked=true; likeCount++; renderLike();
     likeBtn.classList.add('pop'); setTimeout(function(){likeBtn.classList.remove('pop');},500);
     try{ localStorage.setItem('hasLiked','1'); }catch(e){}
-    fetch(LIKE_BASE+'/hit/'+LIKE_NS+'/'+LIKE_KEY)
-      .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
-      .then(function(d){ if(d && d.value!=null){ likeCount=Number(d.value); renderLike(); } })
-      .catch(function(){                                    /* gagal: batalkan */
-        hasLiked=false; likeCount=Math.max(0,likeCount-1); renderLike();
-        try{ localStorage.removeItem('hasLiked'); }catch(e){}
-      });
+    counter('likes',true).then(function(n){ likeCount=n; renderLike(); }).catch(function(){
+      hasLiked=false; likeCount=Math.max(0,likeCount-1); renderLike();
+      try{ localStorage.removeItem('hasLiked'); }catch(e){}
+    });
   });
 
-  /* ================= Form (Netlify Forms) ================= */
-  var form=document.getElementById('cform'), note=document.getElementById('formNote'), btn=document.getElementById('sendBtn');
-  form.addEventListener('submit',function(e){
-    e.preventDefault();
-    btn.disabled=true; note.className='note'; note.textContent=t('f_sending');
-    var body=new URLSearchParams(new FormData(form)).toString();
-    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body})
-      .then(function(r){ if(!r.ok) throw new Error(r.status); form.reset(); note.textContent=t('f_ok'); })
-      .catch(function(){ note.className='note err'; note.textContent=t('f_err'); })
-      .then(function(){ btn.disabled=false; });
-  });
+  /* ================= Buku Tamu (Giscus / GitHub Discussions) ================= */
+  function initGuestbook(){
+    var g=CFG.giscus, box=document.getElementById('giscusBox');
+    if(!g.repo||!g.repoId||!g.categoryId){          /* belum dikonfigurasi -> sembunyikan section */
+      var sec=document.getElementById('pesan'); if(sec) sec.remove();
+      var a=document.querySelector('.menu a[href="#pesan"]'); if(a) a.parentNode.remove();
+      return;
+    }
+    function gTheme(){ return root.getAttribute('data-theme')==='light'?'light':'dark'; }
+    var s=document.createElement('script');
+    s.src='https://giscus.app/client.js'; s.async=true; s.crossOrigin='anonymous';
+    var at={'data-repo':g.repo,'data-repo-id':g.repoId,'data-category':g.category,'data-category-id':g.categoryId,
+      'data-mapping':'pathname','data-strict':'0','data-reactions-enabled':'1','data-emit-metadata':'0',
+      'data-input-position':'top','data-theme':gTheme(),'data-lang':lang};
+    Object.keys(at).forEach(function(k){ s.setAttribute(k,at[k]); });
+    box.appendChild(s);
+    new MutationObserver(function(){
+      var f=document.querySelector('iframe.giscus-frame'); if(!f) return;
+      f.contentWindow.postMessage({giscus:{setConfig:{theme:gTheme(),lang:lang}}},'https://giscus.app');
+    }).observe(root,{attributes:true,attributeFilter:['data-theme','lang']});
+  }
 
-  document.getElementById('yr').textContent=new Date().getFullYear();
+  /* ================= Init ================= */
   applyLang(lang);
   applyMode(mode);
-  renderLike();
-  loadLikes();
+  document.getElementById('year').textContent=new Date().getFullYear();
+  renderLike(); loadLikes(); loadViews(); initGuestbook();
 })();
 </script>
 </body>
