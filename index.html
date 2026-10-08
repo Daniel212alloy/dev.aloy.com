@@ -540,11 +540,15 @@ footer{border-top:1px solid var(--card-b);padding:28px 0 40px;color:var(--muted)
     giscus:{repo:'',repoId:'',category:'',categoryId:''}  /* isi dari giscus.app agar Buku Tamu aktif */
   };
 
-  /* ================= Counter (counterapi.dev) ================= */
+  /* ================= Counter (Abacus - gratis, tanpa API key) ================= */
   function counter(key,up){
-    return fetch('https://api.counterapi.dev/v1/'+CFG.counterNS+'/'+key+(up?'/up':''))
-      .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
-      .then(function(d){ return Number(d.count!=null?d.count:d.value)||0; });
+    return fetch('https://abacus.jasoncameron.dev/'+(up?'hit':'get')+'/'+CFG.counterNS+'/'+key)
+      .then(function(r){
+        if(r.status===404 && !up) return {value:0};      /* counter belum pernah dibuat = 0 */
+        if(!r.ok) throw new Error(r.status);
+        return r.json();
+      })
+      .then(function(d){ return Number(d.value!=null?d.value:d.count)||0; });
   }
 
   /* Views: 1 per pengunjung per 6 jam, bot tidak dihitung */
