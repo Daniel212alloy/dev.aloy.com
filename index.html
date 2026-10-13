@@ -65,6 +65,9 @@ html[data-theme="hacker"] #matrix{display:block}
 .seg button{background:none;border:0;color:var(--muted);font:inherit;font-size:.74rem;font-weight:700;padding:7px 11px;cursor:pointer;transition:color .15s}
 .seg button:hover{color:var(--text)}
 .seg button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent)}
+.nav-pay{display:inline-flex;align-items:center;gap:7px;padding:0 14px;border-radius:10px;background:var(--accent);color:var(--on-accent);font-size:.78rem;font-weight:800;text-decoration:none;white-space:nowrap;transition:background .15s,transform .15s}
+.nav-pay:hover{background:var(--accent-l);transform:translateY(-1px)}
+.nav-pay svg{width:15px;height:15px}
 
 /* ---------- HERO (full layar) ---------- */
 .hero{min-height:calc(100vh - 64px);min-height:calc(100svh - 64px);display:flex;align-items:center;padding:48px 0}
@@ -223,6 +226,9 @@ footer{border-top:1px solid var(--card-b);padding:28px 0 40px;color:var(--muted)
         <button type="button" data-mode="dark" aria-pressed="false" data-i18n="theme_dark">Gelap</button>
         <button type="button" data-mode="hacker" aria-pressed="false">Hacker</button>
       </div>
+      <a class="nav-pay" href="https://jualan.aloy-tech.my.id/Jualan/index.php" target="_blank" rel="noopener noreferrer">
+        <svg class="sym"><use href="#i-bag"/></svg><span data-i18n="nav_pay">Inquiry / Payment</span>
+      </a>
     </div>
   </div>
 </header>
@@ -259,7 +265,7 @@ footer{border-top:1px solid var(--card-b);padding:28px 0 40px;color:var(--muted)
         <div class="ph" aria-hidden="true">DS</div>
       </div>
       <div class="stats">
-        <div class="stat"><b id="viewCount">–</b><small data-i18n="st_views">KUNJUNGAN</small></div>
+        <div class="stat"><b id="viewCount" data-n="">&ndash;</b><small data-i18n="st_views">KUNJUNGAN</small></div>
         <div class="stat"><b id="clock">--:--:--</b><small data-i18n="st_time">WAKTU LOKAL</small></div>
         <div class="stat"><b>ONLINE</b><small data-i18n="st_status">STATUS</small></div>
       </div>
@@ -292,7 +298,7 @@ footer{border-top:1px solid var(--card-b);padding:28px 0 40px;color:var(--muted)
     </div>
     <ul class="links">
       <li>
-        <a class="link" href="index_1.html" target="_blank" rel="noopener noreferrer">
+        <a class="link" href="http://web.aloy-tech.my.id/creative/" target="_blank" rel="noopener noreferrer">
           <span class="ic"><svg><use href="#i-globe"/></svg></span>
           <span>
             <b>Website</b>
@@ -361,9 +367,25 @@ footer{border-top:1px solid var(--card-b);padding:28px 0 40px;color:var(--muted)
     <div class="sec-head">
       <span class="eyebrow" data-i18n="eb_guest">Tinggalkan jejak</span>
       <h2 data-i18n="sec_guest">Pesan Pengunjung</h2>
-      <p data-i18n="guest_sub">Tulis pesan singkat, saran, atau sekadar sapaan. Pesan akan tampil di sini (perlu akun GitHub).</p>
+      <p data-i18n="guest_sub">Tulis pesan singkat, saran, atau sekadar sapaan. Pesan akan tampil di sini.</p>
     </div>
-    <div class="panel" id="giscusBox"></div>
+    <div class="gb">
+      <div class="panel">
+        <form id="gbForm" autocomplete="off">
+          <label><span data-i18n="f_name">Nama</span>
+            <input id="gbName" required maxlength="30" placeholder="Nama kamu" data-i18n-ph="f_name_ph">
+          </label>
+          <label><span data-i18n="f_msg">Pesan</span>
+            <textarea id="gbMessage" required maxlength="200" placeholder="Tulis pesan singkat..." data-i18n-ph="f_msg_ph"></textarea>
+          </label>
+          <button class="btn btn-primary" type="submit" id="gbSend" data-i18n="f_send">Kirim pesan</button>
+          <p class="note" id="gbNote" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+      <div class="panel">
+        <div class="gb-list" id="gbList" aria-live="polite"></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -371,7 +393,8 @@ footer{border-top:1px solid var(--card-b);padding:28px 0 40px;color:var(--muted)
 
 <footer>
   <div class="container foot">
-    <span>&copy; <span id="year"></span> DaNiel S. · <span data-i18n="foot">Built with Linux 🧸</span></span>
+    <span>&copy; <span id="yr"></span> DaNiel S. · <span data-i18n="foot">Built with Linux 🧸</span></span>
+    <button type="button" class="admin-btn" id="adminBtn">🔒 Admin</button>
   </div>
 </footer>
 
@@ -390,7 +413,7 @@ footer{border-top:1px solid var(--card-b);padding:28px 0 40px;color:var(--muted)
       desc:"DaNiel S. menyediakan jasa IT: setup server, jaringan, aplikasi self-hosted, dan website. Hubungi lewat WhatsApp, LinkedIn, atau email.",
       ogd:"Setup server, jaringan, aplikasi self-hosted, dan website. Konsultasi gratis.",
       status:"Tersedia untuk proyek baru", lang_aria:"Bahasa", theme_aria:"Tema tampilan", theme_light:"Terang", theme_dark:"Gelap",
-      nav_services:"Layanan", nav_links:"Tautan", nav_guest:"Buku Tamu",
+      nav_services:"Layanan", nav_links:"Tautan", nav_guest:"Buku Tamu", nav_pay:"Inquiry / Payment",
       avatar_alt:"Foto DaNiel S.", skills_aria:"Keahlian",
       role:"IT Services · Server, Jaringan, Chatbot & Web",
       bio:"Membantu bisnis dan tim membangun infrastruktur IT yang stabil, aman, dan mudah dikelola. Juga menjual produk teknologi, gitar, dan barang lainnya.",
@@ -418,7 +441,7 @@ footer{border-top:1px solid var(--card-b);padding:28px 0 40px;color:var(--muted)
       desc:"DaNiel S. offers IT services: server setup, networking, self-hosted applications, and websites. Reach out via WhatsApp, LinkedIn, or email.",
       ogd:"Server, network, self-hosted app, and website setup. Free consultation.",
       status:"Available for new projects", lang_aria:"Language", theme_aria:"Display theme", theme_light:"Light", theme_dark:"Dark",
-      nav_services:"Services", nav_links:"Connect", nav_guest:"Guestbook",
+      nav_services:"Services", nav_links:"Connect", nav_guest:"Guestbook", nav_pay:"Inquiry / Payment",
       avatar_alt:"Photo of DaNiel S.", skills_aria:"Skills",
       role:"IT Services · Servers, Networking, Chatbot & Web",
       bio:"I help businesses and teams build stable, secure, and easy-to-manage IT infrastructure. I also sell tech products, guitars, and other goods.",
@@ -431,7 +454,7 @@ footer{border-top:1px solid var(--card-b);padding:28px 0 40px;color:var(--muted)
       s4t:"Web Development", s4d:"Responsive, fast, and easy-to-maintain websites.",
       eb_links:"Get in touch", sec_links:"Connect",
       l_web:"Portfolio & creative work", l_gh:"Code & projects", l_in:"Professional profile", l_olx:"Products & items for sale",
-      eb_guest:"Leave a note", sec_guest:"Visitor Messages", guest_sub:"Leave a short message, feedback, or just say hi. It will show up here (GitHub account required).",
+      eb_guest:"Leave a note", sec_guest:"Visitor Messages", guest_sub:"Leave a short message, feedback, or just say hi. It will show up here.",
       f_name:"Name", f_name_ph:"Your name", f_msg:"Message", f_msg_ph:"Write a short message...", f_send:"Send message",
       f_sending:"Sending...", f_ok:"Sent. Thanks for your message!", f_fill:"Please fill in your name and message.", f_err:"Failed to send the message, please try again.",
       gb_loading:"Loading messages...", gb_empty:"No messages yet. Be the first!", gb_del:"Delete", gb_confirm:"Delete this message?",
@@ -468,8 +491,8 @@ footer{border-top:1px solid var(--card-b);padding:28px 0 40px;color:var(--muted)
     document.querySelectorAll('[data-lang]').forEach(function(b){ b.setAttribute('aria-pressed',b.dataset.lang===l); });
     try{localStorage.setItem('lang',l);}catch(e){}
     var vc=document.getElementById('viewCount');
-    if(vc.dataset.n) vc.textContent=Number(vc.dataset.n).toLocaleString(d.loc);
-    renderLike(); tick();
+    vc.textContent=vc.dataset.n?Number(vc.dataset.n).toLocaleString(d.loc):'\u2013';
+    renderLike(); renderGB(); renderAdminBtn(); tick();
   }
   document.querySelectorAll('[data-lang]').forEach(function(b){
     b.addEventListener('click',function(){ applyLang(b.dataset.lang); });
@@ -534,36 +557,7 @@ footer{border-top:1px solid var(--card-b);padding:28px 0 40px;color:var(--muted)
     }
   });
 
-  /* ================= Konfigurasi ================= */
-  var CFG={
-    counterNS:'daniel212alloy-site',   /* nama unik untuk counter kunjungan & like */
-    giscus:{repo:'',repoId:'',category:'',categoryId:''}  /* isi dari giscus.app agar Buku Tamu aktif */
-  };
-
-  /* ================= Counter (Abacus - gratis, tanpa API key) ================= */
-  function counter(key,up){
-    return fetch('https://abacus.jasoncameron.dev/'+(up?'hit':'get')+'/'+CFG.counterNS+'/'+key)
-      .then(function(r){
-        if(r.status===404 && !up) return {value:0};      /* counter belum pernah dibuat = 0 */
-        if(!r.ok) throw new Error(r.status);
-        return r.json();
-      })
-      .then(function(d){ return Number(d.value!=null?d.value:d.count)||0; });
-  }
-
-  /* Views: 1 per pengunjung per 6 jam, bot tidak dihitung */
-  var isBot=/bot|crawl|spider|slurp|curl|wget|preview|monitor|uptime/i.test(navigator.userAgent);
-  function loadViews(){
-    var last=0; try{ last=Number(localStorage.getItem('ds_seen'))||0; }catch(e){}
-    var bump=!isBot && (Date.now()-last>6*3600*1000);
-    counter('views',bump).then(function(n){
-      if(bump){ try{ localStorage.setItem('ds_seen',String(Date.now())); }catch(e){} }
-      var vc=document.getElementById('viewCount');
-      vc.dataset.n=n; vc.textContent=n.toLocaleString(t('loc'));
-    }).catch(function(){});
-  }
-
-  /* ================= Like ================= */
+  /* ================= Like (like.php -> likes.json) ================= */
   var likeBtn=document.getElementById('likeBtn'), likeCountEl=document.getElementById('likeCount'), likeLabel=document.getElementById('likeLabel');
   var likeCount=0, hasLiked=false;
   try{ hasLiked=localStorage.getItem('hasLiked')==='1'; }catch(e){}
@@ -576,46 +570,123 @@ footer{border-top:1px solid var(--card-b);padding:28px 0 40px;color:var(--muted)
     likeBtn.setAttribute('aria-label',t('like_aria')+' ('+likeCountEl.textContent+')');
   }
   function loadLikes(){
-    counter('likes',false).then(function(n){ likeCount=n; renderLike(); }).catch(function(){ renderLike(); });
+    fetch('like.php',{cache:'no-store'})
+      .then(function(r){ return r.json(); })
+      .then(function(d){ likeCount=Number(d.likes)||0; renderLike(); })
+      .catch(function(){ renderLike(); });
   }
   likeBtn.addEventListener('click',function(){
     if(hasLiked) return;
     hasLiked=true; likeCount++; renderLike();
     likeBtn.classList.add('pop'); setTimeout(function(){likeBtn.classList.remove('pop');},500);
     try{ localStorage.setItem('hasLiked','1'); }catch(e){}
-    counter('likes',true).then(function(n){ likeCount=n; renderLike(); }).catch(function(){
-      hasLiked=false; likeCount=Math.max(0,likeCount-1); renderLike();
-      try{ localStorage.removeItem('hasLiked'); }catch(e){}
-    });
+    fetch('like.php',{method:'POST'})
+      .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function(d){ if(d && d.likes!=null){ likeCount=Number(d.likes); renderLike(); } })
+      .catch(function(){
+        hasLiked=false; likeCount=Math.max(0,likeCount-1); renderLike();
+        try{ localStorage.removeItem('hasLiked'); }catch(e){}
+      });
   });
 
-  /* ================= Buku Tamu (Giscus / GitHub Discussions) ================= */
-  function initGuestbook(){
-    var g=CFG.giscus, box=document.getElementById('giscusBox');
-    if(!g.repo||!g.repoId||!g.categoryId){          /* belum dikonfigurasi -> sembunyikan section */
-      var sec=document.getElementById('pesan'); if(sec) sec.remove();
-      var a=document.querySelector('.menu a[href="#pesan"]'); if(a) a.parentNode.remove();
-      return;
-    }
-    function gTheme(){ return root.getAttribute('data-theme')==='light'?'light':'dark'; }
-    var s=document.createElement('script');
-    s.src='https://giscus.app/client.js'; s.async=true; s.crossOrigin='anonymous';
-    var at={'data-repo':g.repo,'data-repo-id':g.repoId,'data-category':g.category,'data-category-id':g.categoryId,
-      'data-mapping':'pathname','data-strict':'0','data-reactions-enabled':'1','data-emit-metadata':'0',
-      'data-input-position':'top','data-theme':gTheme(),'data-lang':lang};
-    Object.keys(at).forEach(function(k){ s.setAttribute(k,at[k]); });
-    box.appendChild(s);
-    new MutationObserver(function(){
-      var f=document.querySelector('iframe.giscus-frame'); if(!f) return;
-      f.contentWindow.postMessage({giscus:{setConfig:{theme:gTheme(),lang:lang}}},'https://giscus.app');
-    }).observe(root,{attributes:true,attributeFilter:['data-theme','lang']});
+  /* ================= Guestbook (guestbook.php -> guestbook.json) ================= */
+  var gbList=document.getElementById('gbList'), gbForm=document.getElementById('gbForm'),
+      gbNote=document.getElementById('gbNote'), gbSend=document.getElementById('gbSend'),
+      adminBtn=document.getElementById('adminBtn');
+  var entries=null, adminKey=null;
+  try{ adminKey=sessionStorage.getItem('gbAdminKey'); }catch(e){}
+
+  function el(tag,cls,text){
+    var n=document.createElement(tag);
+    if(cls) n.className=cls;
+    if(text!=null) n.textContent=text;      /* textContent = aman dari XSS */
+    return n;
+  }
+  function setNote(msg,err){ gbNote.className='note'+(err?' err':''); gbNote.textContent=msg||''; }
+
+  function renderGB(){
+    gbList.textContent='';
+    if(entries===null){ gbList.appendChild(el('p','gb-empty',t('gb_loading'))); return; }
+    if(!entries.length){ gbList.appendChild(el('p','gb-empty',t('gb_empty'))); return; }
+    entries.forEach(function(e){
+      var item=el('div','gb-item'), head=el('div','gb-head');
+      head.appendChild(el('span','gb-name',e.name));
+      head.appendChild(el('span','gb-time',e.time));
+      if(adminKey){
+        var del=el('button','gb-del','🗑️ '+t('gb_del'));
+        del.type='button';
+        del.addEventListener('click',function(){ deleteEntry(e.id); });
+        head.appendChild(del);
+      }
+      item.appendChild(head);
+      item.appendChild(el('p','gb-msg',e.message));
+      gbList.appendChild(item);
+    });
+  }
+  function renderAdminBtn(){ adminBtn.textContent=adminKey?t('admin_out'):t('admin_in'); }
+
+  function loadGB(){
+    fetch('guestbook.php',{cache:'no-store'})
+      .then(function(r){ return r.json(); })
+      .then(function(d){ entries=d.entries||[]; renderGB(); })
+      .catch(function(){ entries=[]; renderGB(); });
   }
 
+  adminBtn.addEventListener('click',function(){
+    if(adminKey){
+      adminKey=null; try{sessionStorage.removeItem('gbAdminKey');}catch(e){}
+    } else {
+      var pass=prompt(t('gb_pass'));
+      if(!pass) return;
+      adminKey=pass; try{sessionStorage.setItem('gbAdminKey',pass);}catch(e){}
+    }
+    renderAdminBtn(); renderGB();
+  });
+
+  function deleteEntry(id){
+    if(!confirm(t('gb_confirm'))) return;
+    fetch('guestbook.php',{
+      method:'DELETE',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({id:id,admin_key:adminKey})
+    }).then(function(r){
+      if(r.status===401){
+        alert(t('gb_bad'));
+        adminKey=null; try{sessionStorage.removeItem('gbAdminKey');}catch(e){}
+        renderAdminBtn(); renderGB();
+        return null;
+      }
+      return r.json();
+    }).then(function(d){
+      if(d){ entries=d.entries||[]; renderGB(); }
+    }).catch(function(){ alert(t('gb_delfail')); });
+  }
+
+  gbForm.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var nameEl=document.getElementById('gbName'), msgEl=document.getElementById('gbMessage');
+    var name=nameEl.value.trim(), message=msgEl.value.trim();
+    if(!name||!message){ setNote(t('f_fill'),true); return; }
+    gbSend.disabled=true; setNote(t('f_sending'),false);
+    fetch('guestbook.php',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({name:name,message:message})
+    }).then(function(r){
+      if(!r.ok) throw new Error(r.status);
+      return r.json();
+    }).then(function(d){
+      entries=d.entries||[]; renderGB();
+      nameEl.value=''; msgEl.value=''; setNote(t('f_ok'),false);
+    }).catch(function(){ setNote(t('f_err'),true); })
+      .then(function(){ gbSend.disabled=false; });
+  });
+
   /* ================= Init ================= */
+  document.getElementById('yr').textContent=new Date().getFullYear();
   applyLang(lang);
   applyMode(mode);
-  document.getElementById('year').textContent=new Date().getFullYear();
-  renderLike(); loadLikes(); loadViews(); initGuestbook();
+  renderLike(); loadLikes(); loadGB();
 })();
 </script>
 </body>
