@@ -219,6 +219,33 @@ footer{border-top:1px solid var(--card-b);padding:28px 0 40px;color:var(--muted)
   .nav-pay{flex:1;padding:10px 14px}
   .cta{padding:24px}
 }
+
+/* ---------- REFINEMENT: tampilan profesional ---------- */
+:root{--bg:#0c1220;--bg2:#111a2c;--accent:#2fae86;--accent-l:#52c9a2;--on-accent:#04130c;--card:rgba(255,255,255,.03);--card-b:rgba(255,255,255,.1);--ic-bg:rgba(47,174,134,.13);--row-h:rgba(47,174,134,.09)}
+html[data-theme="light"]{--accent:#0d7a5c;--accent-l:#0d7a5c;--on-accent:#fff;--ic-bg:#e1f2ec;--row-h:#e8f4ef}
+body{background:var(--bg)}
+html[data-theme="light"] body{background:var(--bg)}
+.dot{animation:none;box-shadow:none}
+h1 span{color:inherit}
+.role{color:var(--text);font-weight:600}
+.eyebrow{text-transform:none;letter-spacing:0;font-size:.86rem;font-weight:600;color:var(--accent-l)}
+.avatar{background:var(--card-b);padding:3px;box-shadow:none}
+.stats{grid-template-columns:repeat(2,1fr);max-width:340px}
+.stat small{letter-spacing:0;font-size:.74rem}
+.svc,.step,.link,.panel,.stat{border-radius:12px}
+.cta{border-radius:16px;background:var(--card);box-shadow:none}
+.panel{box-shadow:none}
+.btn{border-radius:10px}
+.svc:hover,.link:hover,.btn-primary:hover,.btn-ghost:hover,.nav-pay:hover{transform:none}
+.link:hover .go{transform:none}
+.reveal,.reveal.in{opacity:1!important;transform:none!important;transition:none!important}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+select{font:inherit;font-size:.94rem;color:var(--text);background:var(--input);border:1px solid var(--card-b);border-radius:12px;padding:12px 14px;width:100%}
+select:focus{outline:none;border-color:var(--accent)}
+.inq{margin-top:20px;max-width:760px}
+.inq h3{margin:0 0 16px;font-size:1.05rem}
+@media (max-width:640px){.row2{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -303,9 +330,8 @@ footer{border-top:1px solid var(--card-b);padding:28px 0 40px;color:var(--muted)
         <div class="ph" aria-hidden="true">DS</div>
       </div>
       <div class="stats">
-        <div class="stat"><b id="viewCount">–</b><small data-i18n="st_views">KUNJUNGAN</small></div>
-        <div class="stat"><b id="clock">--:--:--</b><small data-i18n="st_time">WAKTU LOKAL</small></div>
-        <div class="stat"><b>ONLINE</b><small data-i18n="st_status">STATUS</small></div>
+        <div class="stat" id="viewStat"><b id="viewCount">–</b><small data-i18n="st_views">Kunjungan</small></div>
+        <div class="stat"><b id="clock">--:--:--</b><small data-i18n="st_time">Jam Jakarta (WIB)</small></div>
       </div>
     </div>
   </div>
@@ -361,6 +387,22 @@ footer{border-top:1px solid var(--card-b);padding:28px 0 40px;color:var(--muted)
           <svg class="sym"><use href="#i-bag"/></svg><span data-i18n="nav_pay">Inquiry / Payment</span>
         </a>
       </div>
+    </div>
+    <div class="panel inq" id="inqPanel">
+      <h3 data-i18n="inq_t">Kirim kebutuhan Anda</h3>
+      <form id="inqForm">
+        <div class="row2">
+          <label><span data-i18n="f_name">Nama</span><input name="name" required minlength="2" maxlength="60" autocomplete="name"></label>
+          <label><span data-i18n="f_contact">WhatsApp atau email</span><input name="contact" required minlength="5" maxlength="80" autocomplete="off"></label>
+        </div>
+        <label><span data-i18n="f_topic">Kebutuhan</span>
+          <select name="topic"><option>Setup Server</option><option>Jaringan &amp; VPN</option><option>Aplikasi Self-Hosted</option><option>Website</option><option>Lainnya</option></select>
+        </label>
+        <label><span data-i18n="f_msg">Ceritakan singkat kebutuhan Anda</span><textarea name="message" required minlength="10" maxlength="1500"></textarea></label>
+        <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn btn-primary" type="submit" data-i18n="f_send">Kirim inquiry</button>
+        <p class="note" id="inqNote" role="status"></p>
+      </form>
     </div>
   </div>
 </section>
@@ -443,9 +485,20 @@ footer{border-top:1px solid var(--card-b);padding:28px 0 40px;color:var(--muted)
     <div class="sec-head">
       <span class="eyebrow" data-i18n="eb_guest">Tinggalkan jejak</span>
       <h2 data-i18n="sec_guest">Pesan Pengunjung</h2>
-      <p data-i18n="guest_sub">Tulis pesan singkat, saran, atau sekadar sapaan. Pesan akan tampil di sini (perlu akun GitHub).</p>
+      <p data-i18n="guest_sub">Tulis pesan singkat, saran, atau sekadar sapaan. Pesan akan tampil di sini.</p>
     </div>
-    <div class="panel" id="giscusBox"></div>
+    <div class="gb">
+      <div class="panel">
+        <form id="gbForm">
+          <label><span data-i18n="gb_name">Nama</span><input name="name" required minlength="2" maxlength="40" autocomplete="name"></label>
+          <label><span data-i18n="gb_msg">Pesan</span><textarea name="message" required minlength="3" maxlength="500"></textarea></label>
+          <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn-primary" type="submit" data-i18n="gb_send">Kirim pesan</button>
+          <p class="note" id="gbNote" role="status"></p>
+        </form>
+      </div>
+      <div class="panel"><div class="gb-list" id="gbList" aria-live="polite"></div></div>
+    </div>
   </div>
 </section>
 
@@ -453,7 +506,7 @@ footer{border-top:1px solid var(--card-b);padding:28px 0 40px;color:var(--muted)
 
 <footer>
   <div class="container foot">
-    <span>&copy; <span id="year"></span> DaNiel S. · <span data-i18n="foot">Built with Linux 🧸</span></span>
+    <span>&copy; <span id="year"></span> DaNiel S. · <span data-i18n="foot">Dibangun dengan HTML, CSS, dan Node.js</span></span>
     <span class="foot-right"><a class="totop" href="#home" data-i18n="back_top">↑ Ke atas</a></span>
   </div>
 </footer>
@@ -469,6 +522,21 @@ footer{border-top:1px solid var(--card-b);padding:28px 0 40px;color:var(--muted)
   /* ================= Terjemahan ID / EN ================= */
   var T={
     id:{
+      inq_t:"Kirim kebutuhan Anda",
+      f_name:"Nama",
+      f_contact:"WhatsApp atau email",
+      f_topic:"Kebutuhan",
+      f_msg:"Ceritakan singkat kebutuhan Anda",
+      f_send:"Kirim inquiry",
+      f_ok_inq:"Terkirim. Saya akan membalas secepatnya.",
+      f_ok_gb:"Terima kasih, pesan Anda sudah tampil.",
+      f_fail:"Gagal mengirim. Coba lagi sebentar atau hubungi lewat WhatsApp.",
+      f_rate:"Terlalu banyak kiriman. Coba lagi dalam satu jam.",
+      f_invalid:"Isian belum lengkap atau terlalu pendek.",
+      gb_empty:"Belum ada pesan. Jadilah yang pertama.",
+      gb_name:"Nama",
+      gb_msg:"Pesan",
+      gb_send:"Kirim pesan",
       title:"DaNiel S. | IT Services: Server, Jaringan, Chatbot & Web",
       desc:"DaNiel S. menyediakan jasa IT: setup server, jaringan, aplikasi self-hosted, dan website. Hubungi lewat WhatsApp, LinkedIn, atau email.",
       ogd:"Setup server, jaringan, aplikasi self-hosted, dan website. Konsultasi gratis.",
@@ -485,7 +553,7 @@ footer{border-top:1px solid var(--card-b);padding:28px 0 40px;color:var(--muted)
       role:"IT Services · Server, Jaringan, Chatbot & Web",
       bio:"Membantu bisnis dan tim membangun infrastruktur IT yang stabil, aman, dan mudah dikelola. Juga menjual produk teknologi, gitar, dan barang lainnya.",
       cta:"Konsultasi via WhatsApp", like:"Suka", liked:"Disukai", like_aria:"Sukai halaman ini", share:"Bagikan", share_ok:"Tersalin!", share_aria:"Bagikan halaman ini",
-      st_views:"KUNJUNGAN", st_time:"WAKTU LOKAL", st_status:"STATUS",
+      st_views:"Kunjungan", st_time:"Jam Jakarta (WIB)", st_status:"Status",
       eb_services:"Apa yang saya kerjakan", sec_services:"Layanan",
       s1t:"Setup Server", s1d:"Proxmox, Docker, dan VM Linux yang rapi dan siap produksi.",
       s2t:"Jaringan & VPN", s2d:"Mikrotik, WireGuard, dan tunneling untuk akses remote yang aman.",
@@ -499,11 +567,26 @@ footer{border-top:1px solid var(--card-b);padding:28px 0 40px;color:var(--muted)
       gb_loading:"Memuat pesan...", gb_empty:"Belum ada pesan. Jadilah yang pertama!", gb_del:"Hapus", gb_confirm:"Yakin mau menghapus pesan ini?",
       gb_pass:"Password admin:", gb_bad:"Password admin salah atau sudah kedaluwarsa. Silakan login ulang.", gb_delfail:"Gagal menghapus pesan.",
       admin_in:"🔒 Admin", admin_out:"🔓 Keluar admin",
-      foot:"Built with Linux 🧸",
+      foot:"Built with HTML, CSS, and Node.js",
       wa_consult:"Halo Daniel, saya ingin konsultasi IT.", wa_float:"Halo Daniel, saya lihat profil kamu.",
       mail_subj:"Halo Daniel", loc:"id-ID"
     },
     en:{
+      inq_t:"Tell me what you need",
+      f_name:"Name",
+      f_contact:"WhatsApp or email",
+      f_topic:"Topic",
+      f_msg:"Briefly describe what you need",
+      f_send:"Send inquiry",
+      f_ok_inq:"Sent. I will get back to you shortly.",
+      f_ok_gb:"Thanks, your message is now listed.",
+      f_fail:"Could not send. Try again shortly or message me on WhatsApp.",
+      f_rate:"Too many submissions. Try again in an hour.",
+      f_invalid:"Some fields are missing or too short.",
+      gb_empty:"No messages yet. Be the first.",
+      gb_name:"Name",
+      gb_msg:"Message",
+      gb_send:"Send message",
       title:"DaNiel S. | IT Services: Servers, Networking, Chatbot & Web",
       desc:"DaNiel S. offers IT services: server setup, networking, self-hosted applications, and websites. Reach out via WhatsApp, LinkedIn, or email.",
       ogd:"Server, network, self-hosted app, and website setup. Free consultation.",
@@ -520,7 +603,7 @@ footer{border-top:1px solid var(--card-b);padding:28px 0 40px;color:var(--muted)
       role:"IT Services · Servers, Networking, Chatbot & Web",
       bio:"I help businesses and teams build stable, secure, and easy-to-manage IT infrastructure. I also sell tech products, guitars, and other goods.",
       cta:"Consult via WhatsApp", like:"Like", liked:"Liked", like_aria:"Like this page", share:"Share", share_ok:"Copied!", share_aria:"Share this page",
-      st_views:"VISITS", st_time:"LOCAL TIME", st_status:"STATUS",
+      st_views:"Visits", st_time:"Jakarta time (WIB)", st_status:"Status",
       eb_services:"What I do", sec_services:"Services",
       s1t:"Server Setup", s1d:"Clean, production-ready Proxmox, Docker, and Linux VMs.",
       s2t:"Network & VPN", s2d:"Mikrotik, WireGuard, and tunneling for secure remote access.",
@@ -528,7 +611,7 @@ footer{border-top:1px solid var(--card-b);padding:28px 0 40px;color:var(--muted)
       s4t:"Web Development", s4d:"Responsive, fast, and easy-to-maintain websites.",
       eb_links:"Get in touch", sec_links:"Connect",
       l_web:"Portfolio & creative work", l_gh:"Code & projects", l_in:"Professional profile", l_olx:"Products & items for sale",
-      eb_guest:"Leave a note", sec_guest:"Visitor Messages", guest_sub:"Leave a short message, feedback, or just say hi. It will show up here (GitHub account required).",
+      eb_guest:"Leave a note", sec_guest:"Visitor Messages", guest_sub:"Leave a short message, feedback, or just say hi. It will show up here.",
       f_name:"Name", f_name_ph:"Your name", f_msg:"Message", f_msg_ph:"Write a short message...", f_send:"Send message",
       f_sending:"Sending...", f_ok:"Sent. Thanks for your message!", f_fill:"Please fill in your name and message.", f_err:"Failed to send the message, please try again.",
       gb_loading:"Loading messages...", gb_empty:"No messages yet. Be the first!", gb_del:"Delete", gb_confirm:"Delete this message?",
@@ -615,7 +698,7 @@ footer{border-top:1px solid var(--card-b);padding:28px 0 40px;color:var(--muted)
 
   /* ================= Jam ================= */
   var clockEl=document.getElementById('clock');
-  function tick(){ clockEl.textContent=new Date().toLocaleTimeString(t('loc'),{hour12:false}); }
+  function tick(){ clockEl.textContent=new Date().toLocaleTimeString(t('loc'),{hour12:false,timeZone:'Asia/Jakarta'}); }
   setInterval(tick,1000);
 
   /* ================= Share ================= */
@@ -633,38 +716,24 @@ footer{border-top:1px solid var(--card-b);padding:28px 0 40px;color:var(--muted)
 
   /* ================= Konfigurasi ================= */
   var CFG={
-    counterNS:'daniel212alloy-site',   /* nama unik untuk counter kunjungan & like */
-    giscus:{repo:'',repoId:'',category:'',categoryId:''}  /* isi dari giscus.app agar Buku Tamu aktif */
+    api:'',   /* URL backend sendiri, mis. 'https://api.domainmu.com' (tanpa / di akhir). Kosong = pakai counter gratis Abacus */
+    counterNS:'daniel212alloy-site'   /* nama unik counter Abacus (dipakai hanya jika api kosong) */
   };
-
-  /* ================= Counter (Abacus - gratis, tanpa API key) ================= */
+  /* Counter gratis tanpa server (Abacus): dipakai untuk like & kunjungan saat CFG.api kosong */
   function counter(key,up){
     return fetch('https://abacus.jasoncameron.dev/'+(up?'hit':'get')+'/'+CFG.counterNS+'/'+key)
-      .then(function(r){
-        if(r.status===404 && !up) return {value:0};      /* counter belum pernah dibuat = 0 */
-        if(!r.ok) throw new Error(r.status);
-        return r.json();
-      })
-      .then(function(d){ return Number(d.value!=null?d.value:d.count)||0; });
+      .then(function(r){ if(r.status===404&&!up) return {value:0}; if(!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function(d){ return Number(d.value)||0; });
+  }
+  function ls(k,v){ try{ if(v===undefined) return localStorage.getItem(k); localStorage.setItem(k,v); }catch(e){} return null; }
+  function api(path,body){
+    return fetch(CFG.api+path,{method:body?'POST':'GET',headers:{'Content-Type':'application/json'},body:body?JSON.stringify(body):undefined})
+      .then(function(r){ return r.json().then(function(d){ if(!r.ok){ var e=new Error(d.error||r.status); e.status=r.status; throw e; } return d; }); });
   }
 
-  /* Views: 1 per pengunjung per 6 jam, bot tidak dihitung */
-  var isBot=/bot|crawl|spider|slurp|curl|wget|preview|monitor|uptime/i.test(navigator.userAgent);
-  function loadViews(){
-    var last=0; try{ last=Number(localStorage.getItem('ds_seen'))||0; }catch(e){}
-    var bump=!isBot && (Date.now()-last>6*3600*1000);
-    counter('views',bump).then(function(n){
-      if(bump){ try{ localStorage.setItem('ds_seen',String(Date.now())); }catch(e){} }
-      var vc=document.getElementById('viewCount');
-      vc.dataset.n=n; vc.textContent=n.toLocaleString(t('loc'));
-    }).catch(function(){});
-  }
-
-  /* ================= Like ================= */
+  /* ================= Kunjungan & Like ================= */
   var likeBtn=document.getElementById('likeBtn'), likeCountEl=document.getElementById('likeCount'), likeLabel=document.getElementById('likeLabel');
   var likeCount=0, hasLiked=false;
-  try{ hasLiked=localStorage.getItem('hasLiked')==='1'; }catch(e){}
-
   function renderLike(){
     likeCountEl.textContent=likeCount.toLocaleString(t('loc'));
     likeLabel.textContent=hasLiked?t('liked'):t('like');
@@ -672,40 +741,72 @@ footer{border-top:1px solid var(--card-b);padding:28px 0 40px;color:var(--muted)
     likeBtn.setAttribute('aria-pressed',hasLiked);
     likeBtn.setAttribute('aria-label',t('like_aria')+' ('+likeCountEl.textContent+')');
   }
+  function loadViews(){
+    if(!CFG.api){
+      var bump=!/bot|crawl|spider|slurp|curl|wget|preview|monitor|uptime/i.test(navigator.userAgent) && Date.now()-(Number(ls('ds_seen'))||0)>6*3600*1000;
+      counter('views',bump).then(function(n){ if(bump) ls('ds_seen',String(Date.now())); document.getElementById('viewCount').textContent=n.toLocaleString(t('loc')); }).catch(function(){});
+      return;
+    }
+    api('/api/view',{}).then(function(d){ document.getElementById('viewCount').textContent=d.views.toLocaleString(t('loc')); }).catch(function(){});
+  }
   function loadLikes(){
-    counter('likes',false).then(function(n){ likeCount=n; renderLike(); }).catch(function(){ renderLike(); });
+    if(!CFG.api){
+      hasLiked=ls('hasLiked')==='1'; renderLike();
+      counter('likes',false).then(function(n){ likeCount=n; renderLike(); }).catch(function(){});
+      return;
+    }
+    api('/api/stats').then(function(d){ likeCount=d.likes; hasLiked=d.liked; renderLike(); }).catch(function(){});
   }
   likeBtn.addEventListener('click',function(){
     if(hasLiked) return;
     hasLiked=true; likeCount++; renderLike();
     likeBtn.classList.add('pop'); setTimeout(function(){likeBtn.classList.remove('pop');},500);
-    try{ localStorage.setItem('hasLiked','1'); }catch(e){}
-    counter('likes',true).then(function(n){ likeCount=n; renderLike(); }).catch(function(){
-      hasLiked=false; likeCount=Math.max(0,likeCount-1); renderLike();
-      try{ localStorage.removeItem('hasLiked'); }catch(e){}
-    });
+    var req=CFG.api?api('/api/like',{}).then(function(d){ return d.likes; }):counter('likes',true);
+    req.then(function(n){ likeCount=n; if(!CFG.api) ls('hasLiked','1'); renderLike(); })
+       .catch(function(){ hasLiked=false; likeCount--; renderLike(); });
   });
 
-  /* ================= Buku Tamu (Giscus / GitHub Discussions) ================= */
-  function initGuestbook(){
-    var g=CFG.giscus, box=document.getElementById('giscusBox');
-    if(!g.repo||!g.repoId||!g.categoryId){          /* belum dikonfigurasi -> sembunyikan section */
+  /* ================= Form (inquiry & buku tamu) ================= */
+  function bindForm(formId,noteId,okKey,send,after){
+    var f=document.getElementById(formId), note=document.getElementById(noteId);
+    f.addEventListener('submit',function(e){
+      e.preventDefault();
+      var body={}; new FormData(f).forEach(function(v,k){ body[k]=v; });
+      var btn=f.querySelector('button[type=submit]'); btn.disabled=true; note.className='note'; note.textContent='';
+      send(body).then(function(){ note.textContent=t(okKey); f.reset(); if(after) after(); })
+        .catch(function(err){ note.className='note err'; note.textContent=t(err.status===429?'f_rate':err.status===400?'f_invalid':'f_fail'); })
+        .then(function(){ btn.disabled=false; });
+    });
+  }
+  function renderGB(items){
+    var box=document.getElementById('gbList'); box.textContent='';
+    if(!items.length){ var p=document.createElement('p'); p.className='gb-empty'; p.textContent=t('gb_empty'); box.appendChild(p); return; }
+    items.forEach(function(it){
+      var d=document.createElement('div'); d.className='gb-item';
+      var h=document.createElement('div'); h.className='gb-head';
+      var n=document.createElement('span'); n.className='gb-name'; n.textContent=it.name;
+      var tm=document.createElement('span'); tm.className='gb-time'; tm.textContent=new Date(it.at).toLocaleDateString(t('loc'),{day:'numeric',month:'short',year:'numeric'});
+      var m=document.createElement('p'); m.className='gb-msg'; m.textContent=it.message;
+      h.appendChild(n); h.appendChild(tm); d.appendChild(h); d.appendChild(m); box.appendChild(d);
+    });
+  }
+  function loadGB(){ api('/api/guestbook').then(function(d){ renderGB(d.items); }).catch(function(){ renderGB([]); }); }
+
+  function initBackend(){
+    /* inquiry: pakai backend jika ada, kalau tidak buka WhatsApp dengan teks terisi */
+    bindForm('inqForm','inqNote','f_ok_inq',function(b){
+      if(CFG.api) return api('/api/contact',b);
+      var txt='Halo Daniel, saya '+b.name+' ('+b.contact+'). Kebutuhan: '+b.topic+'. '+b.message;
+      window.open('https://wa.me/6282366737623?text='+encodeURIComponent(txt),'_blank','noopener');
+      return Promise.resolve();
+    });
+    if(!CFG.api){                                   /* mode statis: sembunyikan fitur yang butuh server */
       var sec=document.getElementById('pesan'); if(sec) sec.remove();
       var a=document.querySelector('.menu a[href="#pesan"]'); if(a) a.parentNode.remove();
       return;
     }
-    function gTheme(){ return root.getAttribute('data-theme')==='light'?'light':'dark'; }
-    var s=document.createElement('script');
-    s.src='https://giscus.app/client.js'; s.async=true; s.crossOrigin='anonymous';
-    var at={'data-repo':g.repo,'data-repo-id':g.repoId,'data-category':g.category,'data-category-id':g.categoryId,
-      'data-mapping':'pathname','data-strict':'0','data-reactions-enabled':'1','data-emit-metadata':'0',
-      'data-input-position':'top','data-theme':gTheme(),'data-lang':lang};
-    Object.keys(at).forEach(function(k){ s.setAttribute(k,at[k]); });
-    box.appendChild(s);
-    new MutationObserver(function(){
-      var f=document.querySelector('iframe.giscus-frame'); if(!f) return;
-      f.contentWindow.postMessage({giscus:{setConfig:{theme:gTheme(),lang:lang}}},'https://giscus.app');
-    }).observe(root,{attributes:true,attributeFilter:['data-theme','lang']});
+    bindForm('gbForm','gbNote','f_ok_gb',function(b){ return api('/api/guestbook',b); },loadGB);
+    loadGB();
   }
 
   /* ================= Efek muncul saat scroll + highlight menu aktif ================= */
@@ -746,7 +847,7 @@ footer{border-top:1px solid var(--card-b);padding:28px 0 40px;color:var(--muted)
   applyLang(lang);
   applyMode(mode);
   document.getElementById('year').textContent=new Date().getFullYear();
-  renderLike(); loadLikes(); loadViews(); initGuestbook(); initPolish();
+  renderLike(); loadLikes(); loadViews(); initBackend(); initPolish();
 })();
 </script>
 </body>

@@ -13,12 +13,16 @@
 <meta property="og:locale" content="id_ID">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DaNiel S. | IT Services">
+<meta name="twitter:description" content="Setup server, jaringan, aplikasi self-hosted, dan website.">
+<meta name="robots" content="index,follow">
+<meta name="color-scheme" content="dark light">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f1b2d'/%3E%3Ctext x='32' y='42' font-family='Arial' font-size='28' font-weight='800' text-anchor='middle' fill='%2300ff88'%3EDS%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Person","name":"DaNiel S.","jobTitle":"IT Services","telephone":"+6282366737623","email":"daniel@aloy-tech.my.id","sameAs":["https://github.com/Daniel212alloy","https://instagram.com/daniel.usermod","https://www.linkedin.com/in/daniel-saragih-99b36b179/"]}
+{"@context":"https://schema.org","@type":"Person","name":"DaNiel S.","jobTitle":"IT Services","telephone":"+6282366737623","email":"daniel@aloy-tech.my.id","knowsAbout":["Proxmox","Docker","MikroTik","WireGuard","Nextcloud","Zimbra","LDAP"],"makesOffer":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Setup Server"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Jaringan & VPN"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Aplikasi Self-Hosted"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Pembuatan Website"}}],"sameAs":["https://github.com/Daniel212alloy","https://instagram.com/daniel.usermod","https://www.linkedin.com/in/daniel-saragih-99b36b179/"]}
 </script>
 <style>
 :root{
@@ -180,9 +184,45 @@ footer{border-top:1px solid var(--card-b);padding:28px 0 40px;color:var(--muted)
   .panel{padding:20px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* ---------- TAMBAHAN: skip link, tombol Inquiry/Payment, proses, CTA, reveal ---------- */
+.skip{position:absolute;left:12px;top:-64px;z-index:100;background:var(--accent);color:var(--on-accent);padding:10px 16px;border-radius:10px;font-weight:700;text-decoration:none;transition:top .2s}
+.skip:focus{top:12px}
+.menu a.active{color:var(--text);background:var(--row)}
+.tools{flex-wrap:wrap;justify-content:flex-end}
+.nav-pay{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:0 14px;border-radius:10px;background:var(--accent);color:var(--on-accent);font-size:.78rem;font-weight:800;text-decoration:none;white-space:nowrap;transition:background .15s,transform .15s}
+.nav-pay:hover{background:var(--accent-l);transform:translateY(-1px)}
+.nav-pay svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:0;padding:0;list-style:none}
+.step{padding:24px;border-radius:18px;background:var(--card);border:1px solid var(--card-b)}
+.step .n{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--ic-bg);color:var(--accent-l);border:1px solid var(--card-b);font-family:"JetBrains Mono",monospace;font-size:.86rem;margin-bottom:14px}
+.step b{display:block;font-size:1.02rem;line-height:1.3;margin-bottom:6px}
+.step p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.55}
+
+.cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;padding:36px;border-radius:24px;border:1px solid var(--card-b);background:linear-gradient(135deg,var(--ic-bg),var(--card));box-shadow:var(--shadow)}
+.cta h2{margin:6px 0 0;font-size:clamp(1.5rem,3vw,2rem);font-weight:800;letter-spacing:-.02em}
+.cta p{margin:8px 0 0;color:var(--muted);max-width:56ch}
+.cta .actions{margin-top:0}
+
+.foot-right{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.foot a.totop{color:var(--muted);text-decoration:none;font-size:.78rem}
+.foot a.totop:hover{color:var(--text)}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:1100px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){
+  .steps{grid-template-columns:1fr}
+  .tools{width:100%;justify-content:flex-start}
+  .nav-pay{flex:1;padding:10px 14px}
+  .cta{padding:24px}
+}
 </style>
 </head>
 <body>
+<a class="skip" href="#home" data-i18n="skip">Lewati ke konten</a>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
@@ -209,6 +249,7 @@ footer{border-top:1px solid var(--card-b);padding:28px 0 40px;color:var(--muted)
     <a class="brand" href="#home" aria-label="DaNiel S."><i>DS</i><span>DaNiel S.</span></a>
     <ul class="menu">
       <li><a href="#layanan" data-i18n="nav_services">Layanan</a></li>
+      <li><a href="#proses" data-i18n="nav_process">Proses</a></li>
       <li><a href="#tautan" data-i18n="nav_links">Tautan</a></li>
       <li><a href="#pesan" data-i18n="nav_guest">Buku Tamu</a></li>
     </ul>
@@ -223,6 +264,9 @@ footer{border-top:1px solid var(--card-b);padding:28px 0 40px;color:var(--muted)
         <button type="button" data-mode="dark" aria-pressed="false" data-i18n="theme_dark">Gelap</button>
         <button type="button" data-mode="hacker" aria-pressed="false">Hacker</button>
       </div>
+      <a class="nav-pay" href="https://jualan.aloy-tech.my.id/Jualan/index.php" target="_blank" rel="noopener noreferrer">
+        <svg><use href="#i-bag"/></svg><span data-i18n="nav_pay">Inquiry / Payment</span>
+      </a>
     </div>
   </div>
 </header>
@@ -280,6 +324,44 @@ footer{border-top:1px solid var(--card-b);padding:28px 0 40px;color:var(--muted)
       <li class="svc"><span class="ic"><svg><use href="#i-cloud"/></svg></span><b data-i18n="s3t">Aplikasi Self-Hosted</b><p data-i18n="s3d">Nextcloud, Zimbra, LDAP, plus monitoring Grafana dan Uptime Kuma.</p></li>
       <li class="svc"><span class="ic"><svg><use href="#i-code"/></svg></span><b data-i18n="s4t">Pembuatan Website</b><p data-i18n="s4d">Website responsif, cepat, dan mudah dirawat.</p></li>
     </ul>
+  </div>
+</section>
+
+<!-- ===================== PROSES ===================== -->
+<section class="block" id="proses">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow" data-i18n="eb_process">Cara kerja</span>
+      <h2 data-i18n="sec_process">Alur Pengerjaan</h2>
+      <p data-i18n="process_sub">Proses yang jelas dari konsultasi sampai selesai.</p>
+    </div>
+    <ol class="steps">
+      <li class="step"><span class="n">01</span><b data-i18n="p1t">Konsultasi</b><p data-i18n="p1d">Ceritakan kebutuhan Anda lewat WhatsApp atau email. Gratis dan tanpa komitmen.</p></li>
+      <li class="step"><span class="n">02</span><b data-i18n="p2t">Analisis &amp; Penawaran</b><p data-i18n="p2d">Kebutuhan dianalisis, lalu saya kirim rencana kerja dan estimasi biaya.</p></li>
+      <li class="step"><span class="n">03</span><b data-i18n="p3t">Pengerjaan</b><p data-i18n="p3d">Setup dan konfigurasi dikerjakan bertahap, disertai update progres.</p></li>
+      <li class="step"><span class="n">04</span><b data-i18n="p4t">Serah Terima &amp; Dukungan</b><p data-i18n="p4d">Dokumentasi singkat dan dukungan setelah selesai, supaya sistem tetap stabil.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===================== INQUIRY / PAYMENT ===================== -->
+<section class="block" id="order">
+  <div class="container">
+    <div class="cta">
+      <div>
+        <span class="eyebrow" data-i18n="eb_cta">Siap memulai?</span>
+        <h2 data-i18n="sec_cta">Inquiry &amp; Payment</h2>
+        <p data-i18n="cta_sub">Butuh jasa IT, atau tertarik dengan produk yang dijual? Hubungi saya lewat WhatsApp, atau buka katalog untuk inquiry dan pemesanan.</p>
+      </div>
+      <div class="actions">
+        <a class="btn btn-primary" data-wa="wa_consult" href="https://wa.me/6282366737623" target="_blank" rel="noopener noreferrer">
+          <svg class="sym"><use href="#i-wa"/></svg><span data-i18n="cta">Konsultasi via WhatsApp</span>
+        </a>
+        <a class="btn btn-ghost" href="https://jualan.aloy-tech.my.id/Jualan/index.php" target="_blank" rel="noopener noreferrer">
+          <svg class="sym"><use href="#i-bag"/></svg><span data-i18n="nav_pay">Inquiry / Payment</span>
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -372,6 +454,7 @@ footer{border-top:1px solid var(--card-b);padding:28px 0 40px;color:var(--muted)
 <footer>
   <div class="container foot">
     <span>&copy; <span id="year"></span> DaNiel S. · <span data-i18n="foot">Built with Linux 🧸</span></span>
+    <span class="foot-right"><a class="totop" href="#home" data-i18n="back_top">↑ Ke atas</a></span>
   </div>
 </footer>
 
@@ -390,7 +473,14 @@ footer{border-top:1px solid var(--card-b);padding:28px 0 40px;color:var(--muted)
       desc:"DaNiel S. menyediakan jasa IT: setup server, jaringan, aplikasi self-hosted, dan website. Hubungi lewat WhatsApp, LinkedIn, atau email.",
       ogd:"Setup server, jaringan, aplikasi self-hosted, dan website. Konsultasi gratis.",
       status:"Tersedia untuk proyek baru", lang_aria:"Bahasa", theme_aria:"Tema tampilan", theme_light:"Terang", theme_dark:"Gelap",
-      nav_services:"Layanan", nav_links:"Tautan", nav_guest:"Buku Tamu",
+      nav_services:"Layanan", nav_links:"Tautan", nav_guest:"Buku Tamu", nav_process:"Proses", nav_pay:"Inquiry / Payment",
+      skip:"Lewati ke konten", back_top:"↑ Ke atas",
+      eb_process:"Cara kerja", sec_process:"Alur Pengerjaan", process_sub:"Proses yang jelas dari konsultasi sampai selesai.",
+      p1t:"Konsultasi", p1d:"Ceritakan kebutuhan Anda lewat WhatsApp atau email. Gratis dan tanpa komitmen.",
+      p2t:"Analisis & Penawaran", p2d:"Kebutuhan dianalisis, lalu saya kirim rencana kerja dan estimasi biaya.",
+      p3t:"Pengerjaan", p3d:"Setup dan konfigurasi dikerjakan bertahap, disertai update progres.",
+      p4t:"Serah Terima & Dukungan", p4d:"Dokumentasi singkat dan dukungan setelah selesai, supaya sistem tetap stabil.",
+      eb_cta:"Siap memulai?", sec_cta:"Inquiry & Payment", cta_sub:"Butuh jasa IT, atau tertarik dengan produk yang dijual? Hubungi saya lewat WhatsApp, atau buka katalog untuk inquiry dan pemesanan.",
       avatar_alt:"Foto DaNiel S.", skills_aria:"Keahlian",
       role:"IT Services · Server, Jaringan, Chatbot & Web",
       bio:"Membantu bisnis dan tim membangun infrastruktur IT yang stabil, aman, dan mudah dikelola. Juga menjual produk teknologi, gitar, dan barang lainnya.",
@@ -418,7 +508,14 @@ footer{border-top:1px solid var(--card-b);padding:28px 0 40px;color:var(--muted)
       desc:"DaNiel S. offers IT services: server setup, networking, self-hosted applications, and websites. Reach out via WhatsApp, LinkedIn, or email.",
       ogd:"Server, network, self-hosted app, and website setup. Free consultation.",
       status:"Available for new projects", lang_aria:"Language", theme_aria:"Display theme", theme_light:"Light", theme_dark:"Dark",
-      nav_services:"Services", nav_links:"Connect", nav_guest:"Guestbook",
+      nav_services:"Services", nav_links:"Connect", nav_guest:"Guestbook", nav_process:"Process", nav_pay:"Inquiry / Payment",
+      skip:"Skip to content", back_top:"↑ Back to top",
+      eb_process:"How it works", sec_process:"Work Process", process_sub:"A clear process from consultation to delivery.",
+      p1t:"Consultation", p1d:"Tell me what you need via WhatsApp or email. Free, no commitment.",
+      p2t:"Assessment & Quote", p2d:"Your needs are assessed, then I send a work plan and cost estimate.",
+      p3t:"Implementation", p3d:"Setup and configuration done in stages, with progress updates.",
+      p4t:"Handover & Support", p4d:"Short documentation and follow-up support so the system stays stable.",
+      eb_cta:"Ready to start?", sec_cta:"Inquiry & Payment", cta_sub:"Need IT services, or interested in the products for sale? Message me on WhatsApp, or open the catalog to make an inquiry or order.",
       avatar_alt:"Photo of DaNiel S.", skills_aria:"Skills",
       role:"IT Services · Servers, Networking, Chatbot & Web",
       bio:"I help businesses and teams build stable, secure, and easy-to-manage IT infrastructure. I also sell tech products, guitars, and other goods.",
@@ -611,11 +708,45 @@ footer{border-top:1px solid var(--card-b);padding:28px 0 40px;color:var(--muted)
     }).observe(root,{attributes:true,attributeFilter:['data-theme','lang']});
   }
 
+  /* ================= Efek muncul saat scroll + highlight menu aktif ================= */
+  function initPolish(){
+    var rm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(!rm && 'IntersectionObserver' in window){
+      var targets=document.querySelectorAll('.sec-head,.svc,.step,.cta,.link,#pesan .panel');
+      var io=new IntersectionObserver(function(list){
+        list.forEach(function(en){
+          if(!en.isIntersecting) return;
+          var el=en.target; io.unobserve(el);
+          el.classList.add('in');
+          setTimeout(function(){ el.classList.remove('reveal','in'); el.style.transitionDelay=''; },900);
+        });
+      },{threshold:.12});
+      targets.forEach(function(el,i){
+        el.classList.add('reveal');
+        el.style.transitionDelay=((i%4)*70)+'ms';
+        io.observe(el);
+      });
+    }
+    var links=[].slice.call(document.querySelectorAll('.menu a[href^="#"]'));
+    if(links.length && 'IntersectionObserver' in window){
+      var map={};
+      links.forEach(function(a){ var sec=document.querySelector(a.getAttribute('href')); if(sec) map[sec.id]=a; });
+      var spy=new IntersectionObserver(function(list){
+        list.forEach(function(en){
+          if(!en.isIntersecting) return;
+          links.forEach(function(a){ a.classList.remove('active'); a.removeAttribute('aria-current'); });
+          var a=map[en.target.id]; if(a){ a.classList.add('active'); a.setAttribute('aria-current','true'); }
+        });
+      },{rootMargin:'-45% 0px -50% 0px'});
+      Object.keys(map).forEach(function(id){ spy.observe(document.getElementById(id)); });
+    }
+  }
+
   /* ================= Init ================= */
   applyLang(lang);
   applyMode(mode);
   document.getElementById('year').textContent=new Date().getFullYear();
-  renderLike(); loadLikes(); loadViews(); initGuestbook();
+  renderLike(); loadLikes(); loadViews(); initGuestbook(); initPolish();
 })();
 </script>
 </body>
